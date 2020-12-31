@@ -485,3 +485,34 @@ Search and replace the old site URL in your WordPress installation with the foll
 
 [ec2-user ~]$ php wp-cli.phar search-replace 'old_site_url' 'new_site_url' --path=/path/to/wordpress/installation --skip-columns=guid
 In a web browser, enter the new site URL of your WordPress blog to verify that the site is working properly again. If it is not, see https://wordpress.org/support/article/changing-the-site-url/ and https://wordpress.org/support/article/how-to-install-wordpress/#common-installation-problems for more information.
+
+
+
+<VirtualHost *:80>
+ServerAdmin webmaster@fundnepal.tk
+DocumentRoot "/home/ec2-user/fundnepal/wordpress/"
+ServerName www.fundnepal.tk
+ServerAlias fundnepal.com 
+ErrorLog "logs/fundnepl.tk-error_log"
+CustomLog "logs/fundnepl.tk-access_log" common
+ <Directory /home/ec2-user/fundnepal/wordpress>
+    Order allow,deny
+   Allow from all
+   # New directive needed in Apache 2.4.3: 
+   Require all granted
+  </Directory>
+
+</VirtualHost>
+
+
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo chmod +x .
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo service httpd restart
+Redirecting to /bin/systemctl restart httpd.service
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo chmod +x /home/ec2-user/fundnepal
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo service httpd restart
+Redirecting to /bin/systemctl restart httpd.service
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo chmod +x /home/ec2-user
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo chmod +x /home
+[ec2-user@ip-172-31-85-75 wordpress]$ sudo service httpd restart
+Redirecting to /bin/systemctl restart httpd.service
+[ec2-user@ip-172-31-85-75 wordpress]$ 
