@@ -6,10 +6,10 @@ To ensure that all of your software packages are up to date, perform a quick sof
 
 The -y option installs the updates without asking for confirmation. If you would like to examine the updates before installing, you can omit this option.
 
-### [ec2-user ~]$ sudo yum update -y
+#### [ec2-user ~]$ sudo yum update -y
 Install the lamp-mariadb10.2-php7.2 and php7.2 Amazon Linux Extras repositories to get the latest versions of the LAMP MariaDB and PHP packages for Amazon Linux 2.
 
-### [ec2-user ~]$ sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+#### [ec2-user ~]$ sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
 If you receive an error stating sudo: amazon-linux-extras: command not found, then your instance was not launched with an Amazon Linux 2 AMI (perhaps you are using the Amazon Linux AMI instead). You can view your version of Amazon Linux using the following command.
 
 #### cat /etc/system-release
@@ -22,7 +22,7 @@ Use the yum install command to install multiple software packages and all relate
 #### [ec2-user ~]$ sudo yum install -y httpd mariadb-server
 You can view the current versions of these packages using the following command:
 
-### yum info package_name
+#### yum info package_name
 Start the Apache web server.
 
 #### [ec2-user ~]$ sudo systemctl start httpd
@@ -34,11 +34,11 @@ You can verify that httpd is on by running the following command:
 #### [ec2-user ~]$ sudo systemctl is-enabled httpd
 Add a security rule to allow inbound HTTP (port 80) connections to your instance if you have not already done so. By default, a launch-wizard-N security group was set up for your instance during initialization. This group contains a single rule to allow SSH connections.
 
-Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+##Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
-Choose Instances and select your instance.
+##Choose Instances and select your instance.
 
-On the Security tab, view the inbound rules. You should see the following rule:
+##On the Security tab, view the inbound rules. You should see the following rule:
 
 Port range   Protocol     Source
 22           tcp          0.0.0.0/0
@@ -60,7 +60,7 @@ Important
 If you are not using Amazon Linux, you may also need to configure the firewall on your instance to allow these connections. For more information about how to configure the firewall, see the documentation for your specific distribution.
 
 
-##                        Apache test page
+#                        Apache test page
                     
 Apache httpd serves files that are kept in a directory called the Apache document root. The Amazon Linux Apache document root is /var/www/html, which by default is owned by root.
 
@@ -126,7 +126,7 @@ You should now have a fully functional LAMP web server. If you add content to th
 Step 3: Secure the database server
 The default installation of the MariaDB server has several features that are great for testing and development, but they should be disabled or removed for production servers. The mysql_secure_installation command walks you through the process of setting a root password and removing the insecure features from your installation. Even if you are not planning on using the MariaDB server, we recommend performing this procedure.
 
-To secure the MariaDB server
+## To secure the MariaDB server
 
 Start the MariaDB server.
 
