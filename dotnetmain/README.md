@@ -29,4 +29,17 @@ sudo ln -s /opt/dotnet/dotnet /usr/local/bin
 ```
 sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
 sudo yum install dotnet-sdk-3.1
-
+```
+# to install brew 
+```
+git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
+mkdir ~/.linuxbrew/bin
+ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+eval $(~/.linuxbrew/bin/brew shellenv)
+```
+# to install AWS SAM CLI
+```
+brew tap aws/tap
+brew install aws-sam-cli
+sam --version
+```
