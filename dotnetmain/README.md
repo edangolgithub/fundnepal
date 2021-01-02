@@ -32,7 +32,7 @@ dotnet run
 sudo amazon-linux-extras install nginx1
 ```
 
-#### create a file called kestrel-webnix.service in etc/systemd/system
+#### create a file called kestrel-Webnix.service in etc/systemd/system
 #### paste following code
 ```
 [Unit]
