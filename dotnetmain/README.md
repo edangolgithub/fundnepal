@@ -184,26 +184,46 @@ dotnet run
 
 
 -
-### Prerequisites
+### to install aws SAM 
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-What things you need to install the software and how to install them.
 
-```
-sudo yum install libunwind libicu  
-curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?LinkID=835019  
-sudo mkdir -p /opt/dotnet && sudo tar zxf dotnet.tar.gz -C /opt/dotnet  
-sudo ln -s /opt/dotnet/dotnet /usr/local/bin 
-```
-# to install brew 
-```
-git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
-mkdir ~/.linuxbrew/bin
-ln -s ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
-eval $(~/.linuxbrew/bin/brew shellenv)
-```
-# to install AWS SAM CLI
-```
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+
+
+==> Next steps:
+- Run `brew help` to get started
+- Further documentation: 
+    https://docs.brew.sh
+- Install the Homebrew dependencies if you have sudo access:
+    sudo yum groupinstall 'Development Tools'
+    See https://docs.brew.sh/linux for more information
+- Add Homebrew to your PATH in /home/ec2-user/.bash_profile:
+    echo 'eval $(/home/ec2-user/.linuxbrew/bin/brew shellenv)' >> /home/ec2-user/.bash_profile
+    eval $(/home/ec2-user/.linuxbrew/bin/brew shellenv)
+- We recommend that you install GCC:
+    brew install gcc
+
 brew tap aws/tap
 brew install aws-sam-cli
-sam --version
+brew upgrade aws-sam-cli
 ```
+
+
+==> isl@0.18
+isl@0.18 is keg-only, which means it was not symlinked into /home/ec2-user/.linuxbrew,
+because this is an alternate version of another formula.
+
+For compilers to find isl@0.18 you may need to set:
+  export LDFLAGS="-L/home/ec2-user/.linuxbrew/opt/isl@0.18/lib"
+  export CPPFLAGS="-I/home/ec2-user/.linuxbrew/opt/isl@0.18/include"
+
+For pkg-config to find isl@0.18 you may need to set:
+  export PKG_CONFIG_PATH="/home/ec2-user/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
+
+  
+# f

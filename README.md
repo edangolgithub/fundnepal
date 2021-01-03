@@ -114,3 +114,10 @@ See also the list of [contributors](https://github.com/kylelobo/The-Documentatio
 - Hat tip to anyone whose code was used
 - Inspiration
 - References
+
+## Usefulcommands
+```
+[smoss@bioserva ~]$ locate bash-completion.pc
+/usr/share/pkgconfig/bash-completion.pc
+So I added export PKG_CONFIG_PATH=/usr/share/pkgconfig:$PKG_CONFIG_PATH to my .bashrc.
+```
