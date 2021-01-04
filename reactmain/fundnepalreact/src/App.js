@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
+import ApiCall from './ApiCall';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <ApiCall />
         <img src={logo} className="App-logo" alt="logo" />
         <h1>
          Fund Nepal 2021
