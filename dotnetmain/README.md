@@ -207,3 +207,32 @@ brew tap aws/tap
 brew install aws-sam-cli
 sam --version
 ```
+==> Next steps:
+- Run `brew help` to get started
+- Further documentation: 
+    https://docs.brew.sh
+- Install the Homebrew dependencies if you have sudo access:
+    sudo yum groupinstall 'Development Tools'
+    See https://docs.brew.sh/linux for more information
+- Add Homebrew to your PATH in /home/ec2-user/.bash_profile:
+    echo 'eval $(/home/ec2-user/.linuxbrew/bin/brew shellenv)' >> /home/ec2-user/.bash_profile
+    eval $(/home/ec2-user/.linuxbrew/bin/brew shellenv)
+- We recommend that you install GCC:
+    brew install gcc
+
+brew tap aws/tap
+brew install aws-sam-cli
+brew upgrade aws-sam-cli
+```
+
+
+==> isl@0.18
+isl@0.18 is keg-only, which means it was not symlinked into /home/ec2-user/.linuxbrew,
+because this is an alternate version of another formula.
+
+For compilers to find isl@0.18 you may need to set:
+  export LDFLAGS="-L/home/ec2-user/.linuxbrew/opt/isl@0.18/lib"
+  export CPPFLAGS="-I/home/ec2-user/.linuxbrew/opt/isl@0.18/include"
+
+For pkg-config to find isl@0.18 you may need to set:
+  export PKG_CONFIG_PATH="/home/ec2-user/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
