@@ -1,8 +1,7 @@
+
+
 ## curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ## sudo yum install python 3.7
-## python3 -m pip install Django
-## python3 -m django --version
-
 
 # install virtualenv using pip3
 sudo pip3 install virtualenv 
@@ -17,7 +16,13 @@ source venv/bin/activate
 (venv) [ec2-user@ip-172-31-90-183 pythonmain]$ python --version
 Python 3.7.6
 ```
-## django-admin startproject mysite
+
+## python3 -m pip install Django
+## python3 -m django --version
+
+
+
+## django-admin startproject fundnepalpython
 
 # if sqlite 3.8 error comes do this 
 
