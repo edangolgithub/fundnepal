@@ -6,4 +6,8 @@
 <h1 align="center" color="red">This is readme file of main branch of Fund Nepal Repo</h1>
 
 <h1 align="center" style="color:red;">To view readme files of branches navigate into the folder</h1>
+# to view headerinfo
+```
+curl -v -X POST "https://r275xc9bmd.execute-api.us-east-1.amazonaws.com/test/helloworld?name=John&city=Seattle" -H "content-type: application/json" -H "day: Thursday" -d "{ \"time\": \"evening\" }"
+```
 
