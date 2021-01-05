@@ -36,3 +36,7 @@ Python 3.7.6
 ```
 python3 manage.py runserver
 ```
+```
+ sudo rm /usr/bin/python3
+ sudo ln -s python3.8 /usr/bin/python3
+```
