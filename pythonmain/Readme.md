@@ -17,7 +17,7 @@ source venv/bin/activate
 Python 3.7.6
 ```
 
-## python3 -m pip install Django
+## python3 -m pip install Django or pip install Django
 ## python3 -m django --version
 
 
