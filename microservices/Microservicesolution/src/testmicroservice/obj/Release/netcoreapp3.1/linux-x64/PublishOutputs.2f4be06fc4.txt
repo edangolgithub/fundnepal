@@ -1,0 +1,7 @@
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/testmicroservice.dll
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/testmicroservice.deps.json
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/testmicroservice.runtimeconfig.json
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/testmicroservice.pdb
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/Amazon.Lambda.APIGatewayEvents.dll
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/Amazon.Lambda.Core.dll
+/home/ec2-user/fundnepal/microservices/Microservicesolution/src/testmicroservice/bin/Release/netcoreapp3.1/publish/Amazon.Lambda.Serialization.SystemTextJson.dll
