@@ -236,3 +236,18 @@ For compilers to find isl@0.18 you may need to set:
 
 For pkg-config to find isl@0.18 you may need to set:
   export PKG_CONFIG_PATH="/home/ec2-user/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
+  
+  <pre>
+  
+  Hi @blitzter. I did the following:
+
+[smoss@bioserva ~]$ locate bash-completion.pc
+/usr/share/pkgconfig/bash-completion.pc
+So I added export PKG_CONFIG_PATH=/usr/share/pkgconfig:$PKG_CONFIG_PATH to my .bashrc.
+
+@blitzter
+blitzter commented on Jul 13, 2015
+Thanks @gawbul ,
+The error message is gone if the line mentioned above is added on top of .bashrc (before /etc/bashrc processing).
+
+</pre>
