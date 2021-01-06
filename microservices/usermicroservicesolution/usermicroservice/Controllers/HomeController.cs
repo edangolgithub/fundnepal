@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace usermicroservice.Controllers
 {
 
-[Route("/")]
+    [Route("/")]
     public class HomeController : Controller
     {
        
