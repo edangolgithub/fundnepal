@@ -1,7 +1,5 @@
 from flask import Flask
 import requests
-import json
-
 import pandas as pd
 import pymysql
 
@@ -27,7 +25,10 @@ def data():
 
       print(f'Database version: {version[0]}')
       print(con.server_version)
-
+      cur.execute("select * from user")
+      rows = cur.fetchall()
+      for row in rows:
+        print(f'{row[0]} {row[1]} {row[2]}')
     finally:
       con.close()     
       return "ok"
