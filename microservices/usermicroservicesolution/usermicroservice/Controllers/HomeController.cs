@@ -7,9 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace usermicroservice.Controllers
 {
 
-    [Route("/")]
+    [Route("/home")]
     public class HomeController : Controller
     {
-       
+       // GET api/values
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "ok", "evan" };
+        }
     }
 }
