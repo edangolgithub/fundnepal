@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ec2-user/fundnepal/microservices/DynamoDB_intro/DynamoDB_intro/DynamoDB_intro.csproj": {}
+  },
+  "projects": {
+    "/home/ec2-user/fundnepal/microservices/DynamoDB_intro/DynamoDB_intro/DynamoDB_intro.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ec2-user/fundnepal/microservices/DynamoDB_intro/DynamoDB_intro/DynamoDB_intro.csproj",
+        "projectName": "DynamoDB_intro",
+        "projectPath": "/home/ec2-user/fundnepal/microservices/DynamoDB_intro/DynamoDB_intro/DynamoDB_intro.csproj",
+        "packagesPath": "/home/ec2-user/.nuget/packages/",
+        "outputPath": "/home/ec2-user/fundnepal/microservices/DynamoDB_intro/DynamoDB_intro/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ec2-user/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "targetAlias": "net45",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net45": {
+          "targetAlias": "net45",
+          "dependencies": {
+            "AWSSDK.Core": {
+              "target": "Package",
+              "version": "[3.3.24, )"
+            },
+            "AWSSDK.DynamoDBv2": {
+              "target": "Package",
+              "version": "[3.3.9, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
