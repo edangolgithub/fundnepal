@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Amazon.DynamoDBv2;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +32,16 @@ namespace CommentsAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Comments API", Version = "v1" });
+            });
+            var dynamoDbConfig = Configuration.GetSection("DynamoDb");
+            var runLocalDynamoDb = dynamoDbConfig.GetValue<bool>("LocalMode");
+            services.AddSingleton<IAmazonDynamoDB>(sp =>
+            {
+                var clientConfig = new AmazonDynamoDBConfig
+                {
+                    ServiceURL = dynamoDbConfig.GetValue<string>("LocalServiceUrl")
+                };
+                return new AmazonDynamoDBClient(clientConfig);
             });
         }
 

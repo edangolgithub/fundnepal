@@ -1,3 +1,74 @@
+```
+dotnet --version
+
+dotnet new -i Amazon.Lambda.Templates
+
+dotnet new serverless.AspNetCoreWebAPI --name CommentsAPI
+
+dotnet restore
+
+dotnet run
+
+dotnet add package Swashbuckle.AspNetCore
+
+To use it, you need to register it by adding the below code in the ConfigureServices method in `Startup.cs` file
+
+services.AddSwaggerGen(c => {
+  c.SwaggerDoc("v1", new OpenApiInfo { Title = "Comments API", Version = "v1" });
+});
+
+using Microsoft.OpenApi.Models;
+
+Then, enable it by inserting the below code in the Configure method of Startup.cs file. Add the below code above the app.UseHttpsRedirection(); Otherwise, Swagger UI won't load.
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+  c.SwaggerEndpoint("v1/swagger.json", "Comments");
+  c.RoutePrefix = "swagger";
+});
+
+url/swagger
+
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
+
+aws dynamodb create-table --table-name commentsTable --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url=http://localhost:8000
+
+
+aws dynamodb list-tables --endpoint-url http://localhost:8000
+
+dotnet add package AWSSDK.DynamoDBv2
+dotnet add package AWSSDK.Extensions.NETCore.Setup
+
+Now add configuration to appsettings.json. This contains configuration for local DynamoDB.
+
+"DynamoDb": {
+  "LocalMode": true,
+  "LocalServiceUrl": "http://localhost:8000"
+}
+
+Now we need to register Dynamo Service. In the Startup.cs file, add the below code in ConfigureServices method:
+
+var dynamoDbConfig = Configuration.GetSection("DynamoDb");
+var runLocalDynamoDb = dynamoDbConfig.GetValue<bool>("LocalMode");
+services.AddSingleton<IAmazonDynamoDB>(sp =>
+{
+  var clientConfig = new AmazonDynamoDBConfig 
+  { 
+    ServiceURL = dynamoDbConfig.GetValue<string>("LocalServiceUrl") 
+  };
+    return new AmazonDynamoDBClient(clientConfig);
+});
+
+
+aws dynamodb put-item --table-name commentsTable --item '{"id": {"S": "1"},"username": {"S": "zain"}}' --endpoint-url http://localhost:8000
+
+aws dynamodb scan --table-name commentsTable --endpoint-url http://localhost:8000
+
+```
+
+
+
 # ASP.NET Core Web API Serverless Application
 
 This project shows how to run an ASP.NET Core Web API project as an AWS Lambda exposed through Amazon API Gateway. The NuGet package [Amazon.Lambda.AspNetCoreServer](https://www.nuget.org/packages/Amazon.Lambda.AspNetCoreServer) contains a Lambda function that is used to translate requests from API Gateway into the ASP.NET Core framework and then the responses from ASP.NET Core back to API Gateway.
