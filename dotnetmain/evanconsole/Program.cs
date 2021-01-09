@@ -16,9 +16,6 @@ namespace evanconsole
       
         static void Main(string[] args)
         {
-          
-
-
         }
       
 
