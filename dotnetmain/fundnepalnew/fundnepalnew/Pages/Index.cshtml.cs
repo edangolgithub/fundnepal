@@ -15,3 +15,6 @@ namespace fundnepalnew.Pages
         }
     }
 }
+//fundnepalcognitoapp
+//1siokn0i6hpavm6tpv71ond55v
+//1hPYR79uh5dQEpEsgL9mGXXqhozBsEZMftj6jbqpqu9bktqcue8
