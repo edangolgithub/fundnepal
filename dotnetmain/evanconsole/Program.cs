@@ -1,32 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Amazon;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
+using Amazon.Runtime;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace evanconsole
 {
     class Program
     {
-        public static Table persontable;
+      
         static void Main(string[] args)
         {
-            Console.WriteLine(Figgle.FiggleFonts.Standard.Render("Hello, World!"));
-            dynamo1();
-        }
-        public static void run()
-        {
+          
+
 
         }
-        public async static void dynamo1()
-        {
-            AmazonDynamoDBConfig ddbConfig = new AmazonDynamoDBConfig();
-          //  ddbConfig.ServiceURL = "https://dynamodb.us-east-1.amazonaws.com";
-            ddbConfig.RegionEndpoint = RegionEndpoint.
-            Document pdocument = new Document();
-            AmazonDynamoDBClient client = new AmazonDynamoDBClient(ddbConfig);
-            Task<Document> readMovie = persontable.GetItemAsync(1);
-            pdocument = await readMovie;
-        }
+      
+
 
     }
 }
