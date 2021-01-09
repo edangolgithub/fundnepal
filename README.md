@@ -33,4 +33,3 @@ If you use the top command, you should now see the 1gb swap added. So now lets m
 
 /swapfile swap swap defaults 0 0
 
-When you reboot, use the free -h or df -h command to check for swap.
