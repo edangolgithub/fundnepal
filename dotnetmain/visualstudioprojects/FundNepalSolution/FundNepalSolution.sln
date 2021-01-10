@@ -3,15 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundNepalServerless", "FundNepalServerless\FundNepalServerless.csproj", "{748DF0E9-7081-40FA-AC31-72AB89DB986C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundNepalMicroServices", "FundNepalMicroServices\FundNepalMicroServices.csproj", "{C5EF3048-F9BD-46FF-8A28-C44F7D98CD41}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundNepalMicroServices.Tests", "FundNepalMicroServices.Tests\FundNepalMicroServices.Tests.csproj", "{7174B728-D2A1-434A-BDB8-1841044D5308}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundNepalImage", "FundNepalImage\FundNepalImage.csproj", "{839D636A-3FFA-45D5-8A44-39319C048F13}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FundNepalImage.Tests", "FundNepalImage.Tests\FundNepalImage.Tests.csproj", "{2C291025-F0C6-43CC-989A-BDAE05025522}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cognitoapi", "cognitoapi\cognitoapi.csproj", "{D161270B-9859-42F4-AF40-69C84B7098AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{748DF0E9-7081-40FA-AC31-72AB89DB986C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{748DF0E9-7081-40FA-AC31-72AB89DB986C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{748DF0E9-7081-40FA-AC31-72AB89DB986C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{748DF0E9-7081-40FA-AC31-72AB89DB986C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5EF3048-F9BD-46FF-8A28-C44F7D98CD41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5EF3048-F9BD-46FF-8A28-C44F7D98CD41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5EF3048-F9BD-46FF-8A28-C44F7D98CD41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5EF3048-F9BD-46FF-8A28-C44F7D98CD41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7174B728-D2A1-434A-BDB8-1841044D5308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7174B728-D2A1-434A-BDB8-1841044D5308}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7174B728-D2A1-434A-BDB8-1841044D5308}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7174B728-D2A1-434A-BDB8-1841044D5308}.Release|Any CPU.Build.0 = Release|Any CPU
-		{839D636A-3FFA-45D5-8A44-39319C048F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{839D636A-3FFA-45D5-8A44-39319C048F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{839D636A-3FFA-45D5-8A44-39319C048F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{839D636A-3FFA-45D5-8A44-39319C048F13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C291025-F0C6-43CC-989A-BDAE05025522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C291025-F0C6-43CC-989A-BDAE05025522}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C291025-F0C6-43CC-989A-BDAE05025522}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C291025-F0C6-43CC-989A-BDAE05025522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D161270B-9859-42F4-AF40-69C84B7098AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D161270B-9859-42F4-AF40-69C84B7098AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D161270B-9859-42F4-AF40-69C84B7098AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D161270B-9859-42F4-AF40-69C84B7098AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
