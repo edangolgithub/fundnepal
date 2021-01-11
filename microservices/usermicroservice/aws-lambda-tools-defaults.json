@@ -9,7 +9,7 @@
   "region": "",
   "configuration": "Release",
   "framework": "netcoreapp3.1",
-  "s3-prefix": "usermicroservice/",
+  "s3-prefix": "BlueprintBaseName/",
   "template": "serverless.template",
-  "template-parameters": ""
+  "template-parameters": "ShouldCreateTable=true;UserTableName="
 }
