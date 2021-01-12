@@ -29,6 +29,7 @@ namespace fundnepalnew
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // services.AddMvc().WithRazorPagesRoot("/Prod");
             var clientSecret = Configuration["AmazonCognito:ClientSecret"];
             var clientId = Configuration["AmazonCognito:ClientId"];
             var metadataAddress = Configuration["AmazonCognito:MetaDataAddress"];
@@ -87,16 +88,19 @@ namespace fundnepalnew
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UsePathBase(new PathString("/Prod"));
             app.UseMvc();
-            // app.UseEndpoints(endpoints =>
-            // {
-            //     endpoints.MapRazorPages();
+    
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
 
-            // });
-            app.Run(context =>
-           {
-               return context.Response.WriteAsync("Hello world");
-           });
+            });
+        //     app.Run(context =>
+        //    {
+        //        return context.Response.WriteAsync("Hello world");
+        //    });
         }
     }
 }

@@ -76,8 +76,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-page="/Index">Home</a></li>
+                     <li><a asp-page="/User">User</a></li>
                     <li><a asp-page="/Help">Help</a></li>
 
+                        <a class="nav-link" asp-controller="home" asp-action="index">List</a>
+                  
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li style="padding-top: 10px;">
@@ -97,7 +100,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - fundnepalnew</p>
+            <p>&copy; 2021 - fundnepalnew</p>
         </footer>
     </div>
 
