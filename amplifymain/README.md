@@ -35,15 +35,9 @@ Say what the step will be
 npx create-react-app fundnepalamplify
  
 cd fundnepalamplify
-```
 
-And repeat
-
+sudo npm install -g @aws-amplify/cli
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
 
 ## Usage <a name = "usage"></a>
 
