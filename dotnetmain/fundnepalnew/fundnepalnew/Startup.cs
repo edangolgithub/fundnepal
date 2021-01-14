@@ -69,7 +69,7 @@ namespace fundnepalnew
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-             app.UseAuthentication();
+            app.UseAuthentication();
 
             if (env.IsDevelopment())
             {
@@ -81,7 +81,7 @@ namespace fundnepalnew
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-           
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -90,17 +90,20 @@ namespace fundnepalnew
             app.UseAuthorization();
             app.UsePathBase(new PathString("/Prod"));
             app.UseMvc();
-    
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllers();
+              
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
-        //     app.Run(context =>
-        //    {
-        //        return context.Response.WriteAsync("Hello world");
-        //    });
+            //     app.Run(context =>
+            //    {
+            //        return context.Response.WriteAsync("Hello world");
+            //    });
         }
     }
 }
