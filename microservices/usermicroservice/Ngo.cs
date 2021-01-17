@@ -125,3 +125,143 @@
             </video>
         </videos>
     </project>
+    
+    
+    
+    
+    {
+   "active": "true",
+   "activities": "Literacy, English, and income-generating skills classes are offered at the Women's Learning Center in Sar Asia and serve about 540 women per month. The clinic in Jaghartun provides over 2,500 patients per month with medical care and health education.",
+   "additionalDocumentation": "https://www.globalgiving.org/pfil/364/projdoc.doc",
+   "approvedDate": "2006-10-11T17:21:55-07:00",
+   "contactAddress": "Creating Hope International",
+   "contactAddress2": "P. O. Box 1058",
+   "contactCity": "Dearborn",
+   "contactCountry": "United States",
+   "contactName": "Toc Dunlap",
+   "contactPostal": "48121",
+   "contactState": "Michigan",
+   "contactTitle": "President",
+   "contactUrl": "https://www.creatinghope.org",
+   "country": "Afghanistan",
+   "countries": {
+      "country": {
+         "iso3166CountryCode": "AF",
+         "name": "Afghanistan"
+      }
+   },
+   "dateOfMostRecentReport": "2020-05-05T12:20:05-04:00",
+   "donationOptions": [
+      {
+         "amount": "25",
+         "description": "15 women will learn to read."
+      },
+      {
+         "amount": "50",
+         "description": "5 women have cloth and tools for the tailoring course."
+      },
+      {
+         "amount": "75",
+         "description": "42 women receive basic health care and health education."
+      }
+   ],
+   "funding": "3908.0",
+   "goal": "7260",
+   "id": "354",
+   "imageGallerySize": "11",
+   "imageLink": "https://www.globalgiving.org/pfil/354/pict.jpg",
+   "image": {
+      "@id": "0",
+      "imagelink": [
+         {
+            "@size": "small",
+            "url": "https://www.globalgiving.org/pfil/354/pict_grid1.jpg"
+         },
+         {
+            "@size": "thumbnail",
+            "url": "https://www.globalgiving.org/pfil/354/pict_thumbnail.jpg"
+         },
+         {
+            "@size": "medium",
+            "url": "https://www.globalgiving.org/pfil/354/pict_med.jpg"
+         },
+         {
+            "@size": "large",
+            "url": "https://www.globalgiving.org/pfil/354/pict_grid7.jpg"
+         },
+         {
+            "@size": "extraLarge",
+            "url": "https://www.globalgiving.org/pfil/354/pict_large.jpg"
+         },
+         {
+            "@size": "original",
+            "url": "https://www.globalgiving.org/pfil/354/pict_original.jpg"
+         }
+      ],
+      "title": "Project Image Title"
+   },
+   "iso3166CountryCode": "AF",
+   "longTermImpact": "A full array of medical and educational services are offered to hard-to-reach rural women and girls through Women's Learning Center sites at Jaghartun and Sar Asia. These centers improve the education and health of Afghan women in the region.",
+   "modifiedDate": "2020-06-07T05:25:49-04:00",
+   "need": "No education has been available to women and girls in the western province of Herat, Afghanistan, for the last decade under the Taliban regime. Project partner AIL began offering Women's Learning Centers to women and girls in rural Herat during 2003. These health and education services at Sar Asia and Jaghartun include a maternal/child health clinic, literacy and skills training classes. This project will ensure continuation of these urgently needed, accessible, culturally sensitive services.",
+   "notice": "Important Notice about Projects in India: We are currently expecting delays in getting funds to this project due to new regulatory requirements that impact GlobalGiving’s ability to disburse to some organizations in India. GlobalGiving is working hard to address the issue. Donations to this project will be disbursed as quickly as possible.",
+   "numberOfDonations": "33",
+   "numberOfReports": "73",
+   "organization": {
+      "activeProjects": "2",
+      "addressLine1": "SAMADHAN'S HUMAN RESOURCE CENTER Pocket 2, Sector 2,",
+      "city": "DWARKA",
+      "country": "India",
+      "id": "11",
+      "iso3166CountryCode": "IN",
+      "mission": "To make the world a better place",
+      "name": "Samadhan",
+      "postal": "110 047",
+      "totalProjects": "2",
+      "url": "http://www.samadhanindia.org",
+      "themes": [
+         {
+            "id": "edu",
+            "name": "Education"
+         },
+         {
+            "id": "env",
+            "name": "Environment"
+         }
+      ],
+      "countries": [
+         {
+            "iso3166CountryCode": "ID",
+            "name": "Indonesia"
+         },
+         {
+            "iso3166CountryCode": "NG",
+            "name": "Nigeria"
+         }
+      ]
+   },
+   "progressReportLink": "https://www.globalgiving.org/projects/help-disabled-children-in-india/updates/",
+   "projectLink": "https://www.globalgiving.org/projects/help-disabled-children-in-india/",
+   "region": "Asia and Oceania",
+   "remaining": "3352.0",
+   "status": "active",
+   "summary": "Empowering rural Afghan women and girls in Sar Asia and Jaghartun, Herat, through education and training opportunities as well as health and reproductive health services.",
+   "themeName": "Education",
+   "themes": [
+      {
+         "id": "edu",
+         "name": "Education"
+      },
+      {
+         "id": "children",
+         "name": "Children"
+      }
+   ],
+   "title": "Learning Centers for Rural Women in Herat",
+   "type": "project",
+   "videos": {
+      "video": {
+         "url": "http://www.youtube.com/v/MfYzBQhkbDw"
+      }
+   }
+}
