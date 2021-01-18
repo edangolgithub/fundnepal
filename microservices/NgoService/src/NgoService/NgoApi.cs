@@ -15,6 +15,10 @@ namespace NgoService
         Task Add(Project entity);
         Task Delete(string id);
         Task Update(Project entity);
+        Task<IEnumerable<Organization>> GetAllOrganization();
+        Task AddOrganization(Organization entity);
+        Task DeleteOrganization(string id);
+        Task UpdateOrganization(Organization entity);
     }
     public class ProjectsRepository : IProjectsRepository
     {
@@ -34,6 +38,12 @@ namespace NgoService
             await _context.SaveAsync<Project>(entity);
         }
 
+        public async Task AddOrganization(Organization entity)
+        {
+           entity.OrganizationId = Guid.NewGuid().ToString();           
+           await _context.SaveAsync<Organization>(entity);
+        }
+
         public async Task<IEnumerable<Project>> All()
         {
 
@@ -48,9 +58,28 @@ namespace NgoService
             await _context.DeleteAsync<Project>(id);
         }
 
+        public async Task DeleteOrganization(string id)
+        {
+             await _context.DeleteAsync<Organization>(id);
+        }
+
+        public async Task<IEnumerable<Organization>> GetAllOrganization()
+        {
+            var table = _context.GetTargetTable<Organization>();
+            var scanConditions = new List<ScanCondition>() { new ScanCondition("OrganizationId", ScanOperator.IsNotNull) };
+            var searchResults = _context.ScanAsync<Organization>(scanConditions, null);
+            return (IEnumerable<Organization>)await searchResults.GetNextSetAsync();
+
+        }
+
         public async Task Update(Project entity)
         {
             await _context.SaveAsync<Project>(entity);
+        }
+
+        public async Task UpdateOrganization(Organization entity)
+        {
+           await _context.SaveAsync<Organization>(entity);
         }
     }
 }

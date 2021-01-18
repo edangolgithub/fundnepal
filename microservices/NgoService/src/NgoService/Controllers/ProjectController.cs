@@ -15,29 +15,29 @@ namespace NgoService.Controllers
         {
             _repository = repository;
         }
-        public async Task<IEnumerable<Project>> Get()
+        public async Task<IEnumerable<Organization>> Get()
         {
-            return await _repository.All();
+            return await _repository.GetAllOrganization();
         }
 
         [HttpPost]
-        public async Task Post([FromBody]Project model)
+        public async Task Post([FromBody] Organization model)
         {
            if(model==null)
            {
                return;
            }
-            await _repository.Add(model);
+            await _repository.AddOrganization(model);
         }
         [HttpPut]
-        public async Task PutAsync([FromBody] Project entity)
+        public async Task PutAsync([FromBody] Organization entity)
         {
-             await _repository.Update(entity);
+             await _repository.UpdateOrganization(entity);
         }
         [HttpDelete("{id}")]
         public async Task DeleteAsync(string id)
         {
-            await _repository.Delete(id);
+            await _repository.DeleteOrganization(id);
         }
 
 
