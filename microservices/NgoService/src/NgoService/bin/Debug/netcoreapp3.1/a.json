@@ -1,0 +1,32 @@
+{    
+    "id": "1",
+    "name": "Maiti Nepal",
+    "mission": "To prevent human trafficking by reaching out to the community, particularly children and women, by raising the awareness level of communities and extending life skills so that children and women are not trafficked into different forms of abuse including exploitation.",
+    "emails": [
+      "info@maitinepal.org",
+      "program@maitinepal.org"
+    ],
+    "phones": [
+      "+977-1-4492904",
+      "+977-1-4489978"
+      ],
+    "url": "https://maitinepal.org/",
+    "images": [
+      "https://maitinepal.org/wp-content/themes/maitinepal/images/contact.jpg",
+      "http://www.maitinepal.org/wp-content/uploads/2015/12/awarness_Maitinepal1.jpg"
+      ]
+    ,
+    "projects": [
+      "<a href=\"https:\/\/maitinepal.org\/program-type\/awareness-and-advocacy\/\">Awareness And Advocacy<\/a>",
+  "<a href=\"https:\/\/maitinepal.org/program-type/covid19-response\/\"><h3>Covid19 Response<\/h3><\/a>",
+  "<a href=\"https:\/\/maitinepal.org\/program-type\/prevention-and-advocacy\/\"><h3>Prevention And Protection<\/h3><\/a>",
+  "<a href=\"https:\/\/maitinepal.org\/program-type\/rehabilliationreintegration\/\"><h3>Reintegration and Rehabilitation<\/h3><\/a>",
+  "<a href=\"https:\/\/maitinepal.org\/program-type\/women-rehabilitation-home\/\"><h3>Women Rehabilitation Home<\/h3><\/a>"
+      ],
+    "addressLine1": "83-Maiti Marg, Pinglasthan Gaushala",
+    "city": "kathmandu",
+    "country": "Nepal",
+    "postal": "P.O. Box 9599",
+    "iso3166CountryCode": "np",
+    "establisheddate":"01-01-1980"
+  }

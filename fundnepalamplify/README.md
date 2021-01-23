@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+For setting up a local dev folder, from an existing amplify repo, use an amplify env pull,
+
+It will "pull" the ./aws-exports.js from the server, the latest one that was pushed there, similar to git push and git pull but for the amplify env
+
+It's true that an amplify push will create the ./aws-exports.js file, but it will also "push" it to the server, overwriting whatever is there.
+
+amplify status is also a handy command, similar to git status
+```

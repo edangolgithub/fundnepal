@@ -1,0 +1,10 @@
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/usermicroservice.dll
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/usermicroservice.deps.json
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/usermicroservice.runtimeconfig.json
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/usermicroservice.pdb
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/Amazon.Lambda.APIGatewayEvents.dll
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/Amazon.Lambda.Core.dll
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/Amazon.Lambda.Serialization.SystemTextJson.dll
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/AWSSDK.Core.dll
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/AWSSDK.DynamoDBv2.dll
+/home/ec2-user/fundnepal/microservices/usermicroservice/bin/Release/netcoreapp3.1/publish/Newtonsoft.Json.dll

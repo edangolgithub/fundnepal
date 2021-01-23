@@ -1,0 +1,133 @@
+{
+  "accounttypes": [
+    {
+      "accounttypeid": "1",
+      "accounttype": "Daily",
+      "id": "1"
+    },
+    {
+      "accounttypeid": "2",
+      "accounttype": "Swoniga",
+      "id": "2"
+    },
+    {
+      "accounttypeid": "3",
+      "accounttype": "Monthly",
+      "id": "3"
+    },
+    {
+      "accounttypeid": "4",
+      "accounttype": "Fixed",
+      "id": "4"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Bso Amatya",
+      "address": "kilagal",
+      "phone": "123456",
+      "accountid": "123456789",
+      "accounttype": [
+        "1",
+        "4"
+      ],
+      "id": "1"
+    },
+    {
+      "name": "Evan Dangol",
+      "address": "khusibu",
+      "phone": "4573454",
+      "accountid": "234567891",
+      "accounttype": [
+        "1",
+        "2"
+      ],
+      "id": "2"
+    },
+    {
+      "name": "Ram Prasad",
+      "address": "thamel",
+      "phone": "7867546",
+      "accountid": "345678912",
+      "accounttype": [
+        "1",
+        "4"
+      ],
+      "id": "3"
+    }
+  ],
+  "transaction": [
+    {
+      "accountid": "123456789",
+      "date": "01-11-2021",
+      "accounttypeid": "1",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "1"
+    },
+    {
+      "accountid": "123456789",
+      "date": "01-12-2021",
+      "accounttypeid": "1",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "2"
+    },
+    {
+      "accountid": "234567891",
+      "date": "01-13-2021",
+      "accounttypeid": "2",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "3"
+    },
+    {
+      "accountid": "123456789",
+      "date": "01-14-2021",
+      "accounttypeid": "1",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "4"
+    },
+    {
+      "accountid": "234567891",
+      "date": "01-15-2021",
+      "accounttypeid": "1",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "5"
+    },
+    {
+      "accountid": "345678912",
+      "date": "01-15-2021",
+      "accounttypeid": "3",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "6"
+    },
+    {
+      "accountid": "234567891",
+      "date": "01-15-2021",
+      "accounttypeid": "2",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "7"
+    },
+    {
+      "accountid": "345678912",
+      "date": "01-15-2021",
+      "accounttypeid": "1",
+      "amount": "100",
+      "type": "cash",
+      "entry": "debit",
+      "id": "8"
+    }
+  ]
+}

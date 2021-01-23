@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "96V4LSF7l9rYBgpqWf/MyG1MSCNhbXW2wJSdSuKuZQwZku1H5EobBqgqs2J7b4acscd4cD7Nn6pPJx6zJM35HQ==",
+  "success": true,
+  "projectFilePath": "/home/ec2-user/fundnepal/microservices/NgoService/src/NgoService/NgoService.csproj",
+  "expectedPackageFiles": [
+    "/home/ec2-user/.nuget/packages/amazon.lambda.apigatewayevents/2.3.0/amazon.lambda.apigatewayevents.2.3.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/amazon.lambda.applicationloadbalancerevents/2.1.0/amazon.lambda.applicationloadbalancerevents.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/amazon.lambda.aspnetcoreserver/5.2.0/amazon.lambda.aspnetcoreserver.5.2.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/amazon.lambda.core/1.2.0/amazon.lambda.core.1.2.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/amazon.lambda.logging.aspnetcore/3.1.0/amazon.lambda.logging.aspnetcore.3.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/amazon.lambda.serialization.systemtextjson/2.1.0/amazon.lambda.serialization.systemtextjson.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/awssdk.core/3.5.1.59/awssdk.core.3.5.1.59.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/awssdk.dynamodbv2/3.5.4.18/awssdk.dynamodbv2.3.5.4.18.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/awssdk.extensions.netcore.setup/3.3.101/awssdk.extensions.netcore.setup.3.3.101.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.configuration/2.1.0/microsoft.extensions.configuration.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.configuration.abstractions/2.1.0/microsoft.extensions.configuration.abstractions.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.configuration.binder/2.1.0/microsoft.extensions.configuration.binder.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/2.1.0/microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.logging/2.1.0/microsoft.extensions.logging.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.logging.abstractions/2.1.0/microsoft.extensions.logging.abstractions.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.options/2.1.0/microsoft.extensions.options.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/microsoft.extensions.primitives/2.1.0/microsoft.extensions.primitives.2.1.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/system.memory/4.5.0/system.memory.4.5.0.nupkg.sha512",
+    "/home/ec2-user/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.0/system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

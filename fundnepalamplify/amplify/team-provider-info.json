@@ -1,20 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-fundnepalamplify-dev-75510-authRole",
-      "UnauthRoleArn": "arn:aws:iam::984648741180:role/amplify-fundnepalamplify-dev-75510-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::984648741180:role/amplify-fundnepalamplify-dev-75510-authRole",
+      "AuthRoleName": "amplify-fundnepal-dev-121822-authRole",
+      "UnauthRoleArn": "arn:aws:iam::984648741180:role/amplify-fundnepal-dev-121822-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::984648741180:role/amplify-fundnepal-dev-121822-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-fundnepalamplify-dev-75510-deployment",
-      "UnauthRoleName": "amplify-fundnepalamplify-dev-75510-unauthRole",
-      "StackName": "amplify-fundnepalamplify-dev-75510",
-      "StackId": "arn:aws:cloudformation:us-east-1:984648741180:stack/amplify-fundnepalamplify-dev-75510/a994f150-5574-11eb-b39a-0af95bedae51",
-      "AmplifyAppId": "djkokktg52ox3"
-    },
-    "categories": {
-      "auth": {
-        "fundnepalamplifyccbd05c6": {}
-      }
+      "DeploymentBucketName": "amplify-fundnepal-dev-121822-deployment",
+      "UnauthRoleName": "amplify-fundnepal-dev-121822-unauthRole",
+      "StackName": "amplify-fundnepal-dev-121822",
+      "StackId": "arn:aws:cloudformation:us-east-1:984648741180:stack/amplify-fundnepal-dev-121822/17232c70-5d75-11eb-916d-0eb5b83f8639",
+      "AmplifyAppId": "dmouex6ipyl87"
     }
   }
 }
