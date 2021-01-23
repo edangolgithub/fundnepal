@@ -21,7 +21,8 @@ import { Menubar } from 'primereact/components/menubar/Menubar';
 // import Jsondb from '../Interest/Jsondb'
 // import { Example } from '../hooks/EUseEffect'
 // import Ia from '../Interest/InterestApi'
-import Im from'../Interest/Interestmain'
+import Im from '../Interest/Interestmain'
+import I from '../Interest/Interest'
 class MainMenu extends Component {
 
     constructor() {
@@ -39,7 +40,7 @@ class MainMenu extends Component {
                 //     // className: "p-menuitem-active",
                 //     command: () => { window.location = "#/Projects" }
                 // },
-                
+
                 // {
                 //     label: 'Api',
                 //     icon: 'pi pi-window-maximize',
@@ -64,10 +65,10 @@ class MainMenu extends Component {
         return (
             <Router>
                 <div>
-                  <div style={{textAlign:'left'}} className="card">
-                        <Menubar  model={this.state.items}  />
+                    <div style={{ textAlign: 'left' }} className="card">
+                        <Menubar model={this.state.items} />
                     </div>
-                     <Switch>
+                    <Switch>
                         {/* <Route exact path="/" component={Home} />
                         <Route path="/Projects" component={Projects} />
                         <Route path="/about" component={About} />
@@ -83,9 +84,11 @@ class MainMenu extends Component {
                         <Route path="/d" component={Jsondb} />
                         <Route path="/e" component={Example} />
                         <Route path="/f" component={Ia} /> */}
-                             <Route path="/" component={Im} />
-                        </Switch>
-                    
+                        <Route path="/z" component={I} />
+                        <Route path="/" component={Im} />
+
+                    </Switch>
+
                 </div>
             </Router>
         );
@@ -93,4 +96,3 @@ class MainMenu extends Component {
 }
 
 export default MainMenu;
-

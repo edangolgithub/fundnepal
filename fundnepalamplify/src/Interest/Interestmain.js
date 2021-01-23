@@ -89,7 +89,7 @@ export class Interestmain extends Component {
         this.setState({ selectedaccounttype: selectedaccounttype })
     }
     onselectaccount() {
-        console.log("h")
+        
         this.gettransactions();
     }
     constructor(props) {
@@ -114,7 +114,7 @@ export class Interestmain extends Component {
                         <div className="col-6">
                         <button type="button" onClick={this.onselectaccount} className=" mt-2 float-right btn btn-primary">View</button>
 
-                            <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} data={this.state.accountids} acounts={this.state.accounttypes} />
+                            <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} accountids={this.state.accountids} accounttypes={this.state.accounttypes} />
                         </div>
 
                     </div>

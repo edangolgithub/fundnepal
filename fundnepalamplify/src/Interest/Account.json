@@ -128,6 +128,15 @@
       "type": "cash",
       "entry": "debit",
       "id": "8"
+    },
+    {
+      "accountid": "123456789",
+      "date": "Fri Jan 22 2021",
+      "accounttypeid": "1",
+      "amount": 100,
+      "type": "cash",
+      "entry": "debit",
+      "id": "6TR3BM_"
     }
   ]
 }

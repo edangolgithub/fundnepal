@@ -31,17 +31,15 @@ export class AccountList extends Component {
                         <select className="form-control m-2" onChange={this.handleaccountchange}>
                             <option value="-9">Account</option>
                             {
-
-                                this.props.data.map((ac, k) =>
+                                this.props.accountids.map((ac, k) =>
                                     <option value={ac} key={k}>{ac}</option>
                                 )
                             }
                         </select>
                         <select className="form-control m-2" onChange={this.handletypechange} >
                             <option value="-9">Account Type</option>
-                            {
-
-                                this.props.acounts.map((ac, k) =>
+                            { this.props.accounttypes.map &&
+                                this.props.accounttypes.map((ac, k) =>
                                     <option value={ac.accounttypeid} key={k}>{ac.accounttype}</option>
                                 )
                             }
