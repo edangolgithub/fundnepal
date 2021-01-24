@@ -137,6 +137,42 @@
       "type": "cash",
       "entry": "debit",
       "id": "6TR3BM_"
+    },
+    {
+      "accountid": "123456789",
+      "date": "Sat Jan 23 2021",
+      "accounttypeid": "2",
+      "amount": 100,
+      "type": "cash",
+      "entry": "debit",
+      "id": "fLLmUmk"
+    },
+    {
+      "accountid": "123456789",
+      "date": "Sat Jan 23 2021",
+      "accounttypeid": "2",
+      "amount": 100,
+      "type": "cash",
+      "entry": "debit",
+      "id": "dcv7JVG"
+    },
+    {
+      "accountid": "123456789",
+      "date": "Sat Jan 23 2021",
+      "accounttypeid": "2",
+      "amount": 200,
+      "type": "cash",
+      "entry": "debit",
+      "id": "sKaPeAJ"
+    },
+    {
+      "accountid": "123456789",
+      "date": "Sat Jan 23 2021",
+      "accounttypeid": "3",
+      "amount": 100,
+      "type": "cash",
+      "entry": "debit",
+      "id": "XJjzKcC"
     }
   ]
 }

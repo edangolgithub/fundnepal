@@ -5,6 +5,8 @@ import SelectedAccount from "./SelectedAccount";
 import Transaction from "./Transactions";
 import * as fun from './Calculation'
 import Iform from "./IForm";
+import Loader from '../components/Loader'
+import BLoader from '../Loaders/Beat'
 export class Interestmain extends Component {
     state = {
         accounts: [],
@@ -14,10 +16,11 @@ export class Interestmain extends Component {
         transaction: [],
         accounttypes: [],
         selectedtransaction: [],
-        total: 0
+        total: 0, loading: false,pageloading:true
     };
-    getaccounts() {
-        axios.get('http://localhost:3333/accounts')
+   async getaccounts() {
+    this.setState({pageloading:true});
+      await  axios.get('http://localhost:3333/accounts')
             .then(data => {
                 const d = data.data;
                 // console.log(d);
@@ -25,16 +28,20 @@ export class Interestmain extends Component {
                 this.setState({ accounts: d })
                 this.setState({ accountids: d.map(x => x.accountid) })
                 //console.log(this.state.accountids)
+                this.setState({pageloading:false});
             })
     }
-    getaccounttypes() {
-        axios.get('http://localhost:3333/accounttypes')
+   async getaccounttypes() {
+    this.setState({pageloading:true});
+      await  axios.get('http://localhost:3333/accounttypes')
             .then(data => {
                 const d = data.data;
                 this.setState({ accounttypes: d })
+                this.setState({pageloading:false});
             })
     }
     gettransactions() {
+        this.setState({ loading: true });
         axios.get('http://localhost:3333/transaction')
             .then(data => {
                 const d = data.data;
@@ -48,7 +55,7 @@ export class Interestmain extends Component {
                     }, function () {
                         let res = fun.CalculateTotal(this.state.selectedtransaction)
                         this.setState({ total: res })
-                        console.log(res)
+                        this.setState({ loading: false })
                     })
                 })
             })
@@ -58,6 +65,7 @@ export class Interestmain extends Component {
         axios.post('http://localhost:3333/accounts', data)
     }
     posttransaction(amount) {
+
         if (this.state.selectedaccount.length < 1) {
             console.log(this.state.selectedaccount)
             alert("no account selected")
@@ -72,24 +80,36 @@ export class Interestmain extends Component {
             type: "cash",
             entry: "debit"
         })
-            .then(() => alert("success"))
+            .then(() => {
+                alert("success");
+                this.gettransactions();
+
+            })
     }
     componentDidMount() {
+       
         this.getaccounts();
-        this.getaccounttypes(); 
+        this.getaccounttypes();
+
     }
     onhandleaccountchange(acid) {
         var selectedaccount = this.state.accounts.find(a => a.accountid === acid);
         this.setState({ selectedaccount: selectedaccount })
-        //console.log(this.state.selectedaccount)
+
     }
 
     onhandletypechange(actype) {
         var selectedaccounttype = this.state.accounttypes.find(a => a.accounttypeid === actype);
         this.setState({ selectedaccounttype: selectedaccounttype })
+        this.setState({ selectedtransaction: [], total: 0 })
     }
     onselectaccount() {
-        
+       
+    if(this.state.selectedaccount.length<1 ||this.state.selectedaccounttype.length<1)
+    {
+        alert("select account");
+        return;
+    }
         this.gettransactions();
     }
     constructor(props) {
@@ -103,18 +123,25 @@ export class Interestmain extends Component {
         this.formclick = this.formclick.bind(this)
     }
     formclick(amount) {
+
         var amt = Number(amount);
         this.posttransaction(amt);
+        
     }
     render() {
         return (
             <div>
+                { this.state.pageloading? <BLoader />:
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-6">
-                        <button type="button" onClick={this.onselectaccount} className=" mt-2 float-right btn btn-primary">View</button>
+                        <div className="col d-flex">
+                            <form className="form-inline">
+                                <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} accountids={this.state.accountids} accounttypes={this.state.accounttypes} />
+                                <button type="submit" onClick={this.onselectaccount} className="btn btn-primary">
+                                    {this.state.loading ? <Loader style={{ textAlign: "center" }} /> : "Get Info"}
+                                </button>
 
-                            <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} accountids={this.state.accountids} accounttypes={this.state.accounttypes} />
+                            </form>
                         </div>
 
                     </div>
@@ -134,6 +161,7 @@ export class Interestmain extends Component {
 
 
                 </div>
+               }
             </div>
         )
     }
