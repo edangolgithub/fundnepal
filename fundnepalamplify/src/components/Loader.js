@@ -8,14 +8,14 @@ const override = css`
   border-color: red;
   color:blue;
   text-align:center;
-  margin-top:-10px;
+  
 `;
-const color='white';
-const loading=true;
-    const Loader = () => (
-      <ClockLoader color={color} loading={loading} css={override}  />
-    );  
-    export default Loader;
+const color = 'white';
+const loading = true;
+const Loader = () => (
+  <ClockLoader color={color} loading={loading} css={override} size={25} />
+);
+export default Loader;
 
 
         // <loader.ClipLoader color={color} loading={loading} css={override} size={150} />
@@ -29,7 +29,7 @@ const loading=true;
         // <loader.PropagateLoader color={color} loading={loading} css={override} size={150} />
         // <loader.PuffLoader color={color} loading={loading} css={override} size={150} />
         // <loader.PulseLoader color={color} loading={loading} css={override} size={150} /> 
-      
-      
-    
+
+
+
 

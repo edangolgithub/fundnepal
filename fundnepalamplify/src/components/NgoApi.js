@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap';
 import Loader from './Loader'
 import NgoTable from "./sub/Ngotable"
-import "./style.css"
+import "../statics/style.css"
 export class NgoApi extends Component {
     constructor() {
         super();        

@@ -6,16 +6,16 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Menubar } from 'primereact/components/menubar/Menubar';
 
 
-// import Home from './Home';
-// import About from './AboutUs';
+ import Home from './Home';
+ import About from './AboutUs';
 // import LambdaApi from './LambdaApi';
-// import Contact from './ContactUs';
+ import Contact from './ContactUs';
 // import Register from './Register';
-// import Projects from './Projects';
+ import Projects from './Projects';
 // import Learn from '../learn/Learn';
 // import Jq from '../learn/Jq';
 // import GlobalGivings from '../learn/GlobalGivings';
-// import NgoApi from './NgoApi';
+ import NgoApi from './NgoApi';
 // import NgoForm from './NgoForm'
 // import Interest from '../Interest/Interest'
 // import Jsondb from '../Interest/Jsondb'
@@ -29,33 +29,33 @@ class MainMenu extends Component {
         super();
         this.state = {
             items: [
-                // {
-                //     label: 'Home',
-                //     icon: 'pi pi-home',
-                //     command: () => { window.location = "/" }
-                // },
-                // {
-                //     label: 'Projects',
-                //     icon: 'pi pi-info',
-                //     // className: "p-menuitem-active",
-                //     command: () => { window.location = "#/Projects" }
-                // },
+                {
+                    label: 'Home',
+                    icon: 'pi pi-home',
+                    command: () => { window.location = "/" }
+                },
+                {
+                    label: 'Projects',
+                    icon: 'pi pi-info',
+                    // className: "p-menuitem-active",
+                    command: () => { window.location = "#/Projects" }
+                },
 
-                // {
-                //     label: 'Api',
-                //     icon: 'pi pi-window-maximize',
-                //     command: () => { window.location = "#/Api" }
-                // },
-                // {
-                //     label: 'Themes',
-                //     icon: 'pi pi-window-maximize',
-                //     command: () => { window.location = "#/Register" }
-                // },
-                // {
-                //     label: 'Non-Profit',
-                //     icon: 'pi pi-window-maximize',
-                //     command: () => { window.location = "#/a" }
-                // }
+                {
+                    label: 'Api',
+                    icon: 'pi pi-window-maximize',
+                    command: () => { window.location = "#/Api" }
+                },
+                {
+                    label: 'Themes',
+                    icon: 'pi pi-window-maximize',
+                    command: () => { window.location = "#/Register" }
+                },
+                {
+                    label: 'Non-Profit',
+                    icon: 'pi pi-window-maximize',
+                    command: () => { window.location = "#/a" }
+                }
 
             ]
         };
@@ -84,8 +84,13 @@ class MainMenu extends Component {
                         <Route path="/d" component={Jsondb} />
                         <Route path="/e" component={Example} />
                         <Route path="/f" component={Ia} /> */}
+                        <Route exact path="/" component={Home} />
+                        <Route path="/Api" component={NgoApi} />
+                        <Route path="/Projects" component={Projects} />
+                        <Route path="/about" component={About} />
+                        <Route path="/Contact" component={Contact} />
                         <Route path="/z" component={I} />
-                        <Route path="/" component={Im} />
+                        <Route path="/Im" component={Im} />
 
                     </Switch>
 

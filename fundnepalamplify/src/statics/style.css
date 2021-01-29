@@ -86,8 +86,7 @@ img.gg {
     ;
 }
 .titl
-{
-    border-bottom:rgb(255, 166, 0) solid 1px;
+{   
     font-weight: bolder;
 }
 .dat{
@@ -100,6 +99,76 @@ img.gg {
     padding: 3px;
     font-weight: bolder;
 }
+.trantable
+{
+    max-height: 400px;  
+    overflow: auto;;
+}
+.actable
+{
+    padding:5px;
+}
+.actable table td, .actable table th{
+    padding: 5px;
+}
+.fuy
+{
+    width: 200px;
+    text-align: right;
+   float: right;
+    
+}
+.acdiv
+{
+ font-size:".9em";
+ min-height:"450px";
+ margin-bottom:"10px";
+ font-family:"efont";
+}
+#team
+{
+    border-bottom: 0;
+}
+
+.eslider img{
+    height:500px;
+    object-fit:cover;
+}
+
+.eslider  h3
+{
+    font-weight: bolder;
+    color: rgb(255, 187, 0);
+}
+.eslider  p
+{
+    font-weight: bolder;
+    color: rgb(255, 242, 127);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 768px) {
     .x {
         display: block;
@@ -115,4 +184,15 @@ img.gg {
     .cole {
         display: block;
     }
+    .acdiv
+{
+ font-size:".9em";
+ min-height:"450px";
+ margin-bottom:"10px";
+ font-family:"efont";
+ flex-direction: row;
+ flex-flow: row;
+ clear: both;
+}
+   
 }

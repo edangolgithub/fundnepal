@@ -7,21 +7,12 @@ export class AccountList extends Component {
         this.handletypechange = this.handletypechange.bind(this);
   
     }
-    handleaccountchange(event) {
-        if(event.target.value==="-9")
-        {
-            alert(event.target.value);
-            return;
-        }
+    handleaccountchange(event)
+    {       
         this.props.onhandleaccountchange(event.target.value);
     }
     handletypechange(event)
     {
-        if(event.target.value==="-9")
-        {
-            alert(event.target.value);
-            return;
-        }
         this.props.onhandletypechange(event.target.value);
     }
     

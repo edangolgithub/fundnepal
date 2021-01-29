@@ -1,17 +1,34 @@
 import React, { Component } from 'react'
+import DatePicker from 'react-date-picker';
 export class Transactions extends Component {
+  state={
+    startDate: new Date()
+  }
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    })
+  }
+  constructor()
+  {
+    super();
+    this.handleChange=this.handleChange.bind(this)
+  }
   render() {
     var data = this.props.data;
     return (
       <div>
+ <DatePicker  selected={ this.state.startDate }
+              onChange={ this.handleChange }
+              name="startDate"      />
         { data &&
-          <div className="table-responsive">
+          <div className="table-responsive trantable">
             <table className="table table-sm">
               <thead>
                 <tr>
                   <th scope="col">Date</th>
-                  <th scope="col">Amount</th>
                   <th scope="col">Type</th>
+                  <th scope="col">Amount</th>                 
                 </tr>
               </thead>
               <tbody>
