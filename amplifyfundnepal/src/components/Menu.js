@@ -7,9 +7,7 @@ import Contact from './View/ContactUs';
 import NgoApi from './NgoApi/NgoApi';
 // import Im from '../Interest/Interestmain'
 // import I from '../Interest/Interest'
-class MainMenu extends Component {
-
-   
+class MainMenu extends Component {   
     render() {
         return (
             <div>
