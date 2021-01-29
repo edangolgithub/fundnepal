@@ -5,6 +5,8 @@ import SelectedAccount from "./SelectedAccount";
 import Transaction from "./Transactions";
 import * as fun from './Calculation'
 import Iform from "./IForm";
+import Loader from '../components/Loader'
+import BLoader from '../Loaders/Beat'
 export class Interestmain extends Component {
     state = {
         accounts: [],
@@ -14,10 +16,12 @@ export class Interestmain extends Component {
         transaction: [],
         accounttypes: [],
         selectedtransaction: [],
-        total: 0
+        total: 0, loading: false, pageloading: true,
+        transactionloading: false
     };
-    getaccounts() {
-        axios.get('http://localhost:3333/accounts')
+    async getaccounts() {
+        this.setState({ pageloading: true });
+        await axios.get('http://localhost:3333/accounts')
             .then(data => {
                 const d = data.data;
                 // console.log(d);
@@ -25,16 +29,20 @@ export class Interestmain extends Component {
                 this.setState({ accounts: d })
                 this.setState({ accountids: d.map(x => x.accountid) })
                 //console.log(this.state.accountids)
+                this.setState({ pageloading: false });
             })
     }
-    getaccounttypes() {
-        axios.get('http://localhost:3333/accounttypes')
+    async getaccounttypes() {
+        this.setState({ pageloading: true });
+        await axios.get('http://localhost:3333/accounttypes')
             .then(data => {
                 const d = data.data;
                 this.setState({ accounttypes: d })
+                this.setState({ pageloading: false });
             })
     }
     gettransactions() {
+        this.setState({ loading: true });
         axios.get('http://localhost:3333/transaction')
             .then(data => {
                 const d = data.data;
@@ -48,7 +56,17 @@ export class Interestmain extends Component {
                     }, function () {
                         let res = fun.CalculateTotal(this.state.selectedtransaction)
                         this.setState({ total: res })
-                        console.log(res)
+                        this.setState({ loading: false })
+                        let ci=fun.CalculteDailyInterest(res,.1,365,1/365)
+                        console.log(ci)
+                        //  var result = this.state.selectedtransaction.map(function(el) {
+                        //  var o = Object.assign({}, el);
+                         
+                        //     o.ci = fun.CalculteDailyInterest(parseFloat(el["amount"]),.10,365,1/365);
+                        //     return o;
+                        //   })
+                        // console.log(result);  
+                        
                     })
                 })
             })
@@ -58,10 +76,12 @@ export class Interestmain extends Component {
         axios.post('http://localhost:3333/accounts', data)
     }
     posttransaction(amount) {
+        this.setState({ transactionloading: true })
         if (this.state.selectedaccount.length < 1) {
             console.log(this.state.selectedaccount)
             alert("no account selected")
-            return
+            this.setState({ transactionloading: false })
+            return;
         }
         var d = new Date().toDateString();
         axios.post('http://localhost:3333/transaction', {
@@ -72,24 +92,42 @@ export class Interestmain extends Component {
             type: "cash",
             entry: "debit"
         })
-            .then(() => alert("success"))
+            .then(() => {
+                //alert("success");
+                this.gettransactions();
+                this.setState({ transactionloading: false })
+            })
     }
     componentDidMount() {
+                
         this.getaccounts();
-        this.getaccounttypes(); 
+        this.getaccounttypes();
     }
     onhandleaccountchange(acid) {
+        this.setState({ selectedtransaction: [], total: 0 })
+        if (acid === "-9") {
+            this.setState({ selectedaccount: [] });
+            return;
+        }
         var selectedaccount = this.state.accounts.find(a => a.accountid === acid);
         this.setState({ selectedaccount: selectedaccount })
-        //console.log(this.state.selectedaccount)
     }
 
     onhandletypechange(actype) {
+        this.setState({ selectedtransaction: [], total: 0 })
+        if (actype === "-9") {
+            this.setState({ selectedaccounttype: [] });
+            return;
+        }
         var selectedaccounttype = this.state.accounttypes.find(a => a.accounttypeid === actype);
         this.setState({ selectedaccounttype: selectedaccounttype })
+
     }
     onselectaccount() {
-        
+        if (this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1) {
+            alert("select account");
+            return;
+        }
         this.gettransactions();
     }
     constructor(props) {
@@ -103,37 +141,53 @@ export class Interestmain extends Component {
         this.formclick = this.formclick.bind(this)
     }
     formclick(amount) {
-        var amt = Number(amount);
-        this.posttransaction(amt);
+
+        if (!amount) {
+            alert("0 is not valid money");
+        }
+        else {
+            if (!parseFloat(amount)) {
+                alert(amount + " is not valid amount");
+            }
+            var amt = parseFloat(amount);
+            this.posttransaction(amt);
+        }
+
     }
     render() {
         return (
             <div>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-6">
-                        <button type="button" onClick={this.onselectaccount} className=" mt-2 float-right btn btn-primary">View</button>
+                { this.state.pageloading ? <BLoader /> :
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col d-flex">
+                                <form className="form-inline">
+                                    <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} accountids={this.state.accountids} accounttypes={this.state.accounttypes} />
+                                    <button type="submit" onClick={this.onselectaccount} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
+                                        {this.state.loading ? <Loader style={{ textAlign: "center" }} /> : "Get Info"}
+                                    </button>
 
-                            <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} accountids={this.state.accountids} accounttypes={this.state.accounttypes} />
+                                </form>
+                            </div>
+
                         </div>
+                        <hr />
+                        {
+                            this.state.selectedaccount &&
+                            <div className="row">
+                                <div className="col-2">
+                                    <SelectedAccount data={this.state.selectedaccount} />
+                                </div>
+                                <div className="col-5" >
+                                    <Transaction total={this.state.total} data={this.state.selectedtransaction} />
+                                    <Iform data={this.state} formclick={this.formclick} />
+                                </div>
+                            </div>
+                        }
+
 
                     </div>
-                    <hr />
-                    {
-                        this.state.selectedaccount &&
-                        <div className="row">
-                            <div className="col-2">
-                                <SelectedAccount data={this.state.selectedaccount} />
-                            </div>
-                            <div className="col-10" >
-                                <Transaction total={this.state.total} data={this.state.selectedtransaction} />
-                                <Iform formclick={this.formclick} />
-                            </div>
-                        </div>
-                    }
-
-
-                </div>
+                }
             </div>
         )
     }

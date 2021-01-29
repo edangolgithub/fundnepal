@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Loader from '../components/Loader'
 export class Iform extends Component {
   state = {
     amount: 0
@@ -21,18 +21,20 @@ export class Iform extends Component {
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="fuy">
+        <form >
           <div className="form-group">
-            <label htmlFor="email">Amount</label>
+            <label htmlFor="email fuy">Amount</label>
             <input type="text" name="email" onChange={this.amountchange} className="form-control" id="email" placeholder="Enter Amount" />
           </div>
-          <button type="submit" onClick={this.formclick} className="btn btn-primary mb-2">
-            Add
+          <button disabled={(this.props.data.selectedaccount.length < 1 || this.props.data.selectedaccounttype.length < 1)}
+            type="submit" onClick={this.formclick} className="btn btn-primary mb-2">
+            {this.props.data.transactionloading ?
+              <Loader style={{ textAlign: "center" }} /> : "Add"
+            }
           </button>
         </form>
       </div>
-
     )
   }
 }
