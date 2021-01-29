@@ -12,6 +12,8 @@ const App = () => {
       </header>
 
       <Footer />
+
+<i className="fas fa-circle fa-stack-2x text-primary" />
     </div>
   );
 

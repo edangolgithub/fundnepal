@@ -13,14 +13,32 @@ export class SelectedAccount extends Component {
         const data = this.props.data;
         return (
 
-            <div className="card" style={{fontSize:".9em",minHeight:"450px",marginBottom:"10px",fontFamily:"efont"}}>
+            <div className="card acdiv" >
               { data &&
-                    <div className="card-body">
+                    <div className="card-body actable">
                           <h5 className="card-title">Account details</h5>
-                        <div><span className="titl"> Name :</span> <span className="dat">{data.name}</span> </div>
-                        <div><span className="titl"> Phone :</span><span className="dat"> {data.phone}</span></div>
-                        <div><span className="titl"> Address :</span><span className="dat">{data.address}</span></div>
-                        <div><span className="titl"> Email :</span><span className="dat">{data.phone}</span></div>
+                          <div className="table-responsive ">
+                          <table className="table table-borderless">                            
+                            <tbody>
+                              <tr>
+                                <th scope="row"><span className="titl"> Name :</span></th>
+                                <td><span className="dat">{data.name}</span> </td>
+                                </tr>
+                                <tr>
+                                <th><span className="titl"> Phone :</span></th>
+                                <td><span className="dat"> {data.phone}</span></td>
+                              </tr>
+                              <tr>
+                                <th scope="row"><span className="titl"> Address :</span></th>
+                                <td><span className="dat">{data.address}</span></td>
+                                </tr>
+                                <tr>
+                                <th><span className="titl"> Email :</span></th>
+                                <td><span className="dat">{data.phone}</span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                         </div>   
                     </div>
 
 
