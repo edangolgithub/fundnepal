@@ -11,7 +11,7 @@ import { Menubar } from 'primereact/components/menubar/Menubar';
 // import LambdaApi from './LambdaApi';
  import Contact from './ContactUs';
 // import Register from './Register';
- import Projects from './Projects';
+
 // import Learn from '../learn/Learn';
 // import Jq from '../learn/Jq';
 // import GlobalGivings from '../learn/GlobalGivings';
@@ -35,22 +35,22 @@ class MainMenu extends Component {
                     command: () => { window.location = "/" }
                 },
                 {
-                    label: 'Projects',
+                    label: 'About',
                     icon: 'pi pi-info',
                     // className: "p-menuitem-active",
-                    command: () => { window.location = "#/Projects" }
+                    command: () => { window.location = "#/About" }
                 },
 
                 {
                     label: 'Api',
-                    icon: 'pi pi-window-maximize',
+                    icon: 'pi pi-info',
                     command: () => { window.location = "#/Api" }
                 },
-                {
-                    label: 'Themes',
-                    icon: 'pi pi-window-maximize',
-                    command: () => { window.location = "#/Register" }
-                },
+                // {
+                //     label: 'Themes',
+                //     icon: 'pi pi-window-maximize',
+                //     command: () => { window.location = "#/Register" }
+                // },
                 {
                     label: 'Non-Profit',
                     icon: 'pi pi-window-maximize',
@@ -85,8 +85,7 @@ class MainMenu extends Component {
                         <Route path="/e" component={Example} />
                         <Route path="/f" component={Ia} /> */}
                         <Route exact path="/" component={Home} />
-                        <Route path="/Api" component={NgoApi} />
-                        <Route path="/Projects" component={Projects} />
+                        <Route path="/Api" component={NgoApi} />                      
                         <Route path="/about" component={About} />
                         <Route path="/Contact" component={Contact} />
                         <Route path="/z" component={I} />
