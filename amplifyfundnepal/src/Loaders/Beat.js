@@ -13,8 +13,8 @@ const override = css`
 const color='red';
 const loading=true;
     const Loader = () => (
-        <div style={{minHeight:"700px",paddingTop:"200px"}} >
-        <BeatLoader color={color} loading={loading} css={override} size={50} />
+        <div>
+        <BeatLoader color={color} loading={loading} css={override}  />
         </div>
     );  
     export default Loader;

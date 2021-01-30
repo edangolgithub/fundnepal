@@ -5,14 +5,17 @@ import Home from './View/Home';
 import About from './View/AboutUs';
 import Contact from './View/ContactUs';
 import NgoApi from './NgoApi/NgoApi';
+import GG from '../components/NgoApi/GlobalGivings'
 // import Im from '../Interest/Interestmain'
 // import I from '../Interest/Interest'
 class MainMenu extends Component {   
     render() {
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-                    <Navbar.Brand href="#/">Home</Navbar.Brand>
+                <Navbar sticky="top" collapseOnSelect expand="lg" bg="light" variant="light">
+                    <Navbar.Brand href="#/">
+                    <img height="40px" src="/images/fund.png" alt="logo" /> Home
+                        </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
@@ -50,7 +53,7 @@ class MainMenu extends Component {
                             <NgoApi />
                         </Route>
                         <Route path="/action/3.1">
-                            <Home />
+                            <GG />
                         </Route>
                     </Switch>
                 </Router>

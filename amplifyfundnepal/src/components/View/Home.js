@@ -53,7 +53,7 @@ class Home extends React.Component {
           </div>
         </header>
         {/* Services*/}
-        <section className="page-section" id="services">
+        <section className="page-section p-3" id="services">
           <div className="container">
             <div className="text-center">
               <h2 className="section-heading text-uppercase">Fund Nepal</h2>
