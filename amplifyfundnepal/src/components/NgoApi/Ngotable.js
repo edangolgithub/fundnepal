@@ -14,8 +14,8 @@ export class Ngotable extends Component {
         }
         return (
             <div className="x">
-                {this.props.ngodata.map(ngo => (
-                    <div className="card evan-card" key={ngo.OrganizationId} >
+                {this.props.ngodata.map((ngo,k) => (
+                    <div className="card evan-card" key={k} >
                         <img className="card-img-top gg mx-auto d-block" src={ngo.images[0]} alt="gg" />
                         <div className="card text-center">
                             <div className="card-header"><h5 className="card-title ecardtitle">{ngo.name}</h5></div>
@@ -31,9 +31,9 @@ export class Ngotable extends Component {
                                         <div className="col">
 
                                             {
-                                                ngo.projects.map(project =>
+                                                ngo.projects.map((project,k) =>
                                                     <div className="card mb-1 p-1 fntsm"  >
-                                                        <a href={project} rel="noreferrer" target="_blank">{this.parseurl(project)}</a>
+                                                        <a key={k} href={project} rel="noreferrer" target="_blank">{this.parseurl(project)}</a>
                                                     </div>
                                                 )}
                                         </div>
@@ -45,8 +45,8 @@ export class Ngotable extends Component {
                                     <div className="col">
                                         <a href={ngo.url} rel="noreferrer" target="_blank">
                                             <div className="card imcard">
-                                                {ngo.images.map(image =>
-                                                    <img className="smim" src={image} alt="profile" />
+                                                {ngo.images.map((image,k) =>
+                                                    <img key={k} className="smim" src={image} alt="profile" />
                                                 )}
                                             </div>
                                         </a>
