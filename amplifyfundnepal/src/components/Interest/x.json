@@ -1,0 +1,40 @@
+
+{
+    "Post": {
+      "title": "string",
+      "views": "int",
+      "published": "boolean",
+      "createdAt": "date",
+      "comments": "Comment[]"
+    },
+    "Comment": {
+      "body": "string",
+      "post": "Post"
+    },
+    "accounttypes":
+      {
+        "accounttypeid": "int",
+        "accounttype": "string"      
+      },
+    "accounts":
+    { 
+        "name": "string",
+        "address": "string",
+        "phone": "string",
+        "accountid": "string",
+        "email":"string",
+        "accounttype":"accounttypes[]",
+       "transaction":"transaction[]"
+    },
+     "transaction": 
+      {
+        "accountid": "string",
+        "date": "date",
+        "accounttypeid": "string",
+        "amount": "string",
+        "type": "string",
+        "entry": "string"
+        
+      }
+  }
+  
