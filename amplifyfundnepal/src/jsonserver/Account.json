@@ -64,16 +64,31 @@
       "amount": 100,
       "type": "cash",
       "entry": "debit",
-      "id": 1
+      "id": 1,
+      "interest": 0.02,
+      "balance": 100.02
     },
     {
       "accountid": "123456789",
-      "date": "Sun Jan 24 2021",
+      "date": "Thu Feb 04 2021",
       "accounttypeid": "1",
       "amount": 100,
       "type": "cash",
       "entry": "debit",
+      "balance": 200.01999999999998,
+      "cinterest": 0.02,
       "id": 2
+    },
+    {
+      "accountid": "123456789",
+      "date": "Thu Feb 04 2021",
+      "accounttypeid": "1",
+      "amount": 500,
+      "type": "cash",
+      "entry": "debit",
+      "balance": 600.02,
+      "cinterest": 0.02,
+      "id": 3
     }
   ]
 }

@@ -5,8 +5,8 @@ import SelectedAccount from "./SelectedAccount";
 import Transaction from "./Transactions";
 import * as fun from './Calculation'
 import Iform from "./IForm";
-import Loader from '../components/Loader'
-import BLoader from '../Loaders/Beat'
+import Loader from '../../Loaders/Loader'
+import BLoader from '../../Loaders/Beat'
 export class Interestmain extends Component {
     state = {
         accounts: [],
@@ -17,7 +17,8 @@ export class Interestmain extends Component {
         accounttypes: [],
         selectedtransaction: [],
         total: 0, loading: false, pageloading: true,
-        transactionloading: false
+        transactionloading: false,
+        result:[]
     };
     async getaccounts() {
         this.setState({ pageloading: true });
@@ -57,15 +58,16 @@ export class Interestmain extends Component {
                         let res = fun.CalculateTotal(this.state.selectedtransaction)
                         this.setState({ total: res })
                         this.setState({ loading: false })
-                        let ci=fun.CalculteDailyInterest(res,.1,365,1/365)
+                        let ci=fun.CalculteDailyInterest(res,.06,365,1/365)
                         console.log(ci)
-                        //  var result = this.state.selectedtransaction.map(function(el) {
-                        //  var o = Object.assign({}, el);
-                         
-                        //     o.ci = fun.CalculteDailyInterest(parseFloat(el["amount"]),.10,365,1/365);
-                        //     return o;
-                        //   })
-                        // console.log(result);  
+                          var result = this.state.selectedtransaction.map(function(el) {
+                          var o = Object.assign({}, el);                         
+                             o.ci = fun.CalculteDailyInterest(parseFloat(el["amount"]),.06,365,1/365);
+                             return o;
+                       })
+                       this.setState({result:result})
+                     console.log(result);
+                    
                         
                     })
                 })
@@ -153,6 +155,10 @@ export class Interestmain extends Component {
             this.posttransaction(amt);
         }
 
+    }
+    componentDidUpdate()
+    {
+        console.log(this.state.result)  
     }
     render() {
         return (

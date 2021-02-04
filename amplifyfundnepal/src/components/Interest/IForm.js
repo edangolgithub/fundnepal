@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Loader from '../components/Loader'
+import Loader from '../../Loaders/Loader'
 export class Iform extends Component {
   state = {
     amount: 0

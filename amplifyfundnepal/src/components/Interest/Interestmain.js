@@ -5,8 +5,8 @@ import SelectedAccount from "./SelectedAccount";
 import Transaction from "./Transactions";
 import * as fun from './Calculation'
 import Iform from "./IForm";
-import Loader from '../components/Loader'
-import BLoader from '../Loaders/Beat'
+import Loader from '../../Loaders/Loader'
+import BLoader from '../../Loaders/Beat'
 export class Interestmain extends Component {
     state = {
         accounts: [],
@@ -17,7 +17,8 @@ export class Interestmain extends Component {
         accounttypes: [],
         selectedtransaction: [],
         total: 0, loading: false, pageloading: true,
-        transactionloading: false
+        transactionloading: false,
+        result:[]
     };
     async getaccounts() {
         this.setState({ pageloading: true });
@@ -57,15 +58,16 @@ export class Interestmain extends Component {
                         let res = fun.CalculateTotal(this.state.selectedtransaction)
                         this.setState({ total: res })
                         this.setState({ loading: false })
-                        let ci=fun.CalculteDailyInterest(res,.1,365,1/365)
-                        console.log(ci)
-                        //  var result = this.state.selectedtransaction.map(function(el) {
-                        //  var o = Object.assign({}, el);
-                         
-                        //     o.ci = fun.CalculteDailyInterest(parseFloat(el["amount"]),.10,365,1/365);
-                        //     return o;
-                        //   })
-                        // console.log(result);  
+                        let ci=fun.CalculteDailyInterest(res,.06,365,1/365)
+                       // console.log(ci)
+                          var result = this.state.selectedtransaction.map(function(el) {
+                          var o = Object.assign({}, el);                         
+                             o.ci = fun.CalculteDailyInterest(parseFloat(el["amount"]),.06,365,1/365);
+                             return o;
+                       })
+                       this.setState({result:result})
+                    // console.log(result);
+                    
                         
                     })
                 })
@@ -84,13 +86,20 @@ export class Interestmain extends Component {
             return;
         }
         var d = new Date().toDateString();
+        var bal=this.state.result[0].balance;
+        console.log(bal);
+        var balance=bal+amount;
+        let ci=fun.CalculteDailyInterest(bal,.06,365,1/365)
+     
         axios.post('http://localhost:3333/transaction', {
             accountid: this.state.selectedaccount.accountid,
             date: d,
             accounttypeid: this.state.selectedaccounttype.accounttypeid,
             amount: amount,
             type: "cash",
-            entry: "debit"
+            entry: "debit",
+            balance:balance,
+            cinterest:ci
         })
             .then(() => {
                 //alert("success");
@@ -123,7 +132,8 @@ export class Interestmain extends Component {
         this.setState({ selectedaccounttype: selectedaccounttype })
 
     }
-    onselectaccount() {
+    onselectaccount(event) {
+        event.preventDefault();
         if (this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1) {
             alert("select account");
             return;
@@ -131,6 +141,7 @@ export class Interestmain extends Component {
         this.gettransactions();
     }
     constructor(props) {
+        
         super(props);
         this.onhandleaccountchange = this.onhandleaccountchange.bind(this)
         this.onhandletypechange = this.onhandletypechange.bind(this)
@@ -153,6 +164,10 @@ export class Interestmain extends Component {
             this.posttransaction(amt);
         }
 
+    }
+    componentDidUpdate()
+    {
+      //  console.log(this.state.result)  
     }
     render() {
         return (
@@ -179,7 +194,7 @@ export class Interestmain extends Component {
                                     <SelectedAccount data={this.state.selectedaccount} />
                                 </div>
                                 <div className="col-5" >
-                                    <Transaction total={this.state.total} data={this.state.selectedtransaction} />
+                                    <Transaction total={this.state.total} data={this.state.result} />
                                     <Iform data={this.state} formclick={this.formclick} />
                                 </div>
                             </div>

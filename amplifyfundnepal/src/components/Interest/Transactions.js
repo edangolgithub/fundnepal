@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import DatePicker from 'react-date-picker';
+// import DatePicker from 'react-date-picker';
 export class Transactions extends Component {
   state={
     startDate: new Date()
@@ -18,17 +18,20 @@ export class Transactions extends Component {
     var data = this.props.data;
     return (
       <div>
- <DatePicker  selected={ this.state.startDate }
+ {/* <DatePicker  selected={ this.state.startDate }
               onChange={ this.handleChange }
-              name="startDate"      />
+              name="startDate"      /> */}
         { data &&
           <div className="table-responsive trantable">
-            <table className="table table-sm">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Date</th>
                   <th scope="col">Type</th>
-                  <th scope="col">Amount</th>                 
+                  <th scope="col">Principal</th>  
+                  <th scope="col">Transaction</th>  
+                  <th scope="col">Interest</th> 
+                  <th scope="col">Balance</th>                 
                 </tr>
               </thead>
               <tbody>
@@ -37,7 +40,10 @@ export class Transactions extends Component {
                     <tr key={k}>
                       <td>{t.date}</td>
                       <td>{t.type}</td>
+                      <td>{t.principal}</td>
                       <td>{t.amount}</td>
+                      <td>{t.ci}</td>
+                      <td>{t.balance}</td>
                     </tr>
                   )
                 }
