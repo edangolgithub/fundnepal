@@ -1,0 +1,64 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fundnepal-dev-121822-authRole",
+      "UnauthRoleArn": "arn:aws:iam::984648741180:role/amplify-fundnepal-dev-121822-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::984648741180:role/amplify-fundnepal-dev-121822-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-fundnepal-dev-121822-deployment",
+      "UnauthRoleName": "amplify-fundnepal-dev-121822-unauthRole",
+      "StackName": "amplify-fundnepal-dev-121822",
+      "StackId": "arn:aws:cloudformation:us-east-1:984648741180:stack/amplify-fundnepal-dev-121822/17232c70-5d75-11eb-916d-0eb5b83f8639",
+      "AmplifyAppId": "dmouex6ipyl87"
+    }
+  },
+  "function": {
+    "fundnepallambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2021-02-02T14:44:18.068Z",
+      "lastPackageTimeStamp": "2021-02-02T14:44:19.615Z",
+      "distZipFilename": "fundnepallambda-3032727830646d546269-build.zip",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-fundnepal-dev-121822-deployment/amplify-cfn-templates/function/fundnepallambda-cloudformation-template.json",
+        "logicalId": "functionfundnepallambda"
+      },
+      "lastPushTimeStamp": "2021-02-02T14:45:50.955Z",
+      "output": {
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:984648741180:function:fundnepallambda-dev",
+        "Name": "fundnepallambda-dev",
+        "LambdaExecutionRole": "fundnepalLambdaRole0bffb1b3-dev"
+      },
+      "lastPushDirHash": "ggy4qmwxECQXJluaE9VwBeAoPU0="
+    }
+  },
+  "api": {
+    "fundnepalapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "fundnepallambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-fundnepal-dev-121822-deployment/amplify-cfn-templates/api/fundnepalapi-cloudformation-template.json",
+        "logicalId": "apifundnepalapi"
+      },
+      "lastPushTimeStamp": "2021-02-02T14:45:50.955Z",
+      "output": {
+        "ApiName": "fundnepalapi",
+        "RootUrl": "https://7oao8rerte.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "7oao8rerte"
+      },
+      "lastPushDirHash": "6lSLO32FbjhfA+vBIILRjs8Xs2I="
+    }
+  }
+}
