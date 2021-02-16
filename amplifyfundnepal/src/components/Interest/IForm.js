@@ -3,6 +3,7 @@ import Loader from '../../Loaders/Loader'
 export class Iform extends Component {
   state = {
     amount: 0
+   
   }
   formclick(event) {
     event.preventDefault();
