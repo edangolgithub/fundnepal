@@ -7,8 +7,8 @@ import Contact from './View/ContactUs';
 import NgoApi from './NgoApi/NgoApi';
 import GG from '../components/NgoApi/GlobalGivings'
 import Email from './Email/Email';
-// import Im from '../Interest/Interestmain'
-import I from './Interest/Interestmain'
+import Im from './Interest/Interestmain'
+//import I from './Interest/Interest'
 class MainMenu extends Component {   
     render() {
         return (
@@ -60,7 +60,7 @@ class MainMenu extends Component {
                             <Email />
                         </Route>
                         <Route path="/i">
-                            <I />
+                            <Im />
                         </Route>
                     </Switch>
                 </Router>

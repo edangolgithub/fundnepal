@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import AccountList from "./AccountList"
-//import SelectedAccount from "./SelectedAccount";
+import SelectedAccount from "./SelectedAccount";
 import Transaction from "./Transactions";
 import * as fun from './Calculation'
 import Iform from "./IForm";
@@ -11,41 +11,73 @@ export class Interestmain extends Component {
     state = {
         accounts: [],
         accountids: [],
-        selectedaccount: "",
-        selectedaccounttype: "",
+        selectedaccount: [],
+        selectedaccounttype: [],
         transaction: [],
         accounttypes: [],
         selectedtransaction: [],
         total: 0, loading: false, pageloading: true,
         transactionloading: false,
-
+        result:[]
     };
-
-    gettransactions() {
+    async getaccounts() {
         this.setState({ pageloading: true });
-        axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction')
+        await axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/accounts')
             .then(data => {
-                //console.log(data.data)
-                const ids = [...new Set(data.data.map(x => x.accountid))];
-                const atypes = [...new Set(data.data.map(x => x.accounttypeid))];
-                this.setState({ accountids: ids })
-                this.setState({ accounttypes: atypes })
-                this.setState({ transaction: data.data })
-                this.setState({ pageloading: false })
-
-                //  console.log(atypes)
-
+                const d = data.data;
+                // console.log(d);
+                // console.log(data)
+                this.setState({ accounts: d })
+                this.setState({ accountids: d.map(x => x.accountid) })
+                //console.log(this.state.accountids)
+                this.setState({ pageloading: false });
             })
     }
-    getselectedtransactions() {
-        //  console.log(this.state.transaction)
-        var st = this.state.transaction.filter(a => a.accountid === this.state.selectedaccount
-            && a.accounttypeid === this.state.selectedaccounttype)
-        //        console.log(st)
-        this.setState({ selectedtransaction: st })
+    async getaccounttypes() {
+        this.setState({ pageloading: true });
+        await axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/accounttypes')
+            .then(data => {
+                const d = data.data;
+                this.setState({ accounttypes: d })
+                this.setState({ pageloading: false });
+            })
     }
+    gettransactions() {
+        this.setState({ loading: true });
+        axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction')
+            .then(data => {
+                const d = data.data;
+                this.setState({ transaction: d }, function () {
+                    this.setState({
+                        selectedtransaction: this.state.transaction
+                            .filter(x => x.accounttypeid === this.state
+                                .selectedaccounttype.accounttypeid &&
+                                x.accountid === this.state.selectedaccount
+                                    .accountid)
+                    }, function () {
+                        let res = fun.CalculateTotal(this.state.selectedtransaction)
+                        this.setState({ total: res })
+                        this.setState({ loading: false })
+                        let ci=fun.CalculteDailyInterest(res,.06,365,1/365)
+                       // console.log(ci)
+                          var result = this.state.selectedtransaction.map(function(el) {
+                          var o = Object.assign({}, el);                         
+                             o.ci = fun.CalculteDailyInterest(parseFloat(el["amount"]),.06,365,1/365);
+                             return o;
+                       })
+                       this.setState({result:result})
+                    // console.log(result);
+                    
+                        
+                    })
+                })
+            })
 
-    posttransaction(amt) {
+    }
+    postaccounts(data) {
+        axios.post('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/accounts', data)
+    }
+    posttransaction(amount) {
         this.setState({ transactionloading: true })
         if (this.state.selectedaccount.length < 1) {
             console.log(this.state.selectedaccount)
@@ -53,60 +85,51 @@ export class Interestmain extends Component {
             this.setState({ transactionloading: false })
             return;
         }
-        var d = new Date().toISOString();
-        var bal = 0;
-        console.log(this.state.selectedaccount);
-        console.log(this.state.selectedtransaction[0].balance);
-        bal = this.state.selectedtransaction[0].balance;
-        var balance = bal + amt;
-        console.log(this.state.selectedaccount)
-        console.log(this.state.selectedaccounttype)
-        console.log(amt)
-        console.log(fun.resolveaccounttype(this.state.selectedaccounttype))
-        console.log(d)
-        console.log(balance)
-        console.log(this.state.selectedtransaction[0].accountname)
-        //  let ci = fun.CalculteDailyInterest(bal, .06, 365, 1 / 365)
-
+        var d = new Date().toDateString();
+        var bal=this.state.result[0].balance;
+        console.log(bal);
+        var balance=bal+amount;
+        let ci=fun.CalculteDailyInterest(bal,.06,365,1/365)
+     
         axios.post('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction', {
-            accountid: this.state.selectedaccount,
-            created: d,
-            accounttypeid: this.state.selectedaccounttype,
-            accounttype: fun.resolveaccounttype(this.state.selectedaccounttype),
-            amount: amt,
+            accountid: this.state.selectedaccount.accountid,
+            date: d,
+            accounttypeid: this.state.selectedaccounttype.accounttypeid,
+            amount: amount,
             type: "cash",
             entry: "debit",
-            balance: balance,
-            islatest: "1",
-            cinterest: 0,
-            accountname: this.state.selectedtransaction[0].accountname
+            balance:balance,
+            cinterest:ci
         })
             .then(() => {
+                //alert("success");
+                this.gettransactions();
                 this.setState({ transactionloading: false })
-                //  this.gettransactions();
-
             })
     }
     componentDidMount() {
-
-        this.gettransactions();
+                
+        this.getaccounts();
+        this.getaccounttypes();
     }
     onhandleaccountchange(acid) {
         this.setState({ selectedtransaction: [], total: 0 })
         if (acid === "-9") {
-            this.setState({ selectedaccount: "" });
+            this.setState({ selectedaccount: [] });
             return;
         }
-        this.setState({ selectedaccount: acid })
+        var selectedaccount = this.state.accounts.find(a => a.accountid === acid);
+        this.setState({ selectedaccount: selectedaccount })
     }
 
     onhandletypechange(actype) {
         this.setState({ selectedtransaction: [], total: 0 })
         if (actype === "-9") {
-            this.setState({ selectedaccounttype: "" });
+            this.setState({ selectedaccounttype: [] });
             return;
         }
-        this.setState({ selectedaccounttype: actype })
+        var selectedaccounttype = this.state.accounttypes.find(a => a.accounttypeid === actype);
+        this.setState({ selectedaccounttype: selectedaccounttype })
 
     }
     onselectaccount(event) {
@@ -115,10 +138,10 @@ export class Interestmain extends Component {
             alert("select account");
             return;
         }
-        this.getselectedtransactions();
+        this.gettransactions();
     }
     constructor(props) {
-
+        
         super(props);
         this.onhandleaccountchange = this.onhandleaccountchange.bind(this)
         this.onhandletypechange = this.onhandletypechange.bind(this)
@@ -127,12 +150,6 @@ export class Interestmain extends Component {
         // this.getaccounts=this.getaccounts.bind(this)
         // this.getaccounttypes=this.getaccounttypes.bind(this)
         this.formclick = this.formclick.bind(this)
-        this.onrefresh = this.onrefresh.bind(this);
-    }
-    onrefresh() {
-        this.gettransactions();
-        //   this.getselectedtransactions();
-        this.setState({ selectedtransaction: [] });
     }
     formclick(amount) {
 
@@ -148,8 +165,9 @@ export class Interestmain extends Component {
         }
 
     }
-    componentDidUpdate() {
-        //  console.log(this.state.result)  
+    componentDidUpdate()
+    {
+      //  console.log(this.state.result)  
     }
     render() {
         return (
@@ -163,9 +181,6 @@ export class Interestmain extends Component {
                                     <button type="submit" onClick={this.onselectaccount} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
                                         {this.state.loading ? <Loader style={{ textAlign: "center" }} /> : "Get Info"}
                                     </button>
-                                    <button style={{marginLeft:"50px"}} type="submit" onClick={this.onrefresh} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
-                                        Refresh
-                                    </button>
 
                                 </form>
                             </div>
@@ -175,11 +190,11 @@ export class Interestmain extends Component {
                         {
                             this.state.selectedaccount &&
                             <div className="row">
-                                {/* <div className="col-2">
+                                <div className="col-2">
                                     <SelectedAccount data={this.state.selectedaccount} />
-                                </div> */}
-                                <div className="col-12" >
-                                    <Transaction total={this.state.total} data={this.state.selectedtransaction} />
+                                </div>
+                                <div className="col-5" >
+                                    <Transaction total={this.state.total} data={this.state.result} />
                                     <Iform data={this.state} formclick={this.formclick} />
                                 </div>
                             </div>

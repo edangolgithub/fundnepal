@@ -45,3 +45,23 @@ export function CalculteDailyInterest(p, r, n, t) {
 //             })
 //         })
 
+export function resolveaccounttype(ac){
+    var str = ""
+    switch (ac) {
+        case "1":
+            str = "Daily";
+            break;
+        case "2":
+            str = "Monthly";
+            break;
+        case "3":
+            str = "Fixed";
+            break;
+        case "4":
+            str = "Swoniga";
+            break;
+        default:
+            break;
+    }
+    return str;
+}

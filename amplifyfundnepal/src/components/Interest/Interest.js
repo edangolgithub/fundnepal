@@ -106,7 +106,7 @@ export class Interestmain extends Component {
                             </div>
                             <div className="col-10" >
                                 <Transaction total={this.state.total} data={this.state.selectedtransaction} />
-                                <Iform formclick={this.formclick} />
+                                <Iform data={this.state} formclick={this.formclick} />
                             </div>
                         </div>
                     }
