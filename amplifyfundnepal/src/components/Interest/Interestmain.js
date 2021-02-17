@@ -16,7 +16,7 @@ export class Interestmain extends Component {
         transaction: [],
         accounttypes: [],
         selectedtransaction: [],
-        total: 0, loading: false, pageloading: true,
+        loading: false, pageloading: true,
         transactionloading: false,
 
     };
@@ -46,6 +46,17 @@ export class Interestmain extends Component {
     }
 
     posttransaction(amt) {
+        if(!this.state.selectedtransaction[0].hasOwnProperty('created')
+        || !this.state.selectedtransaction[0].hasOwnProperty('amount')
+        || !this.state.selectedtransaction[0].hasOwnProperty('balance')
+        || !this.state.selectedtransaction[0].hasOwnProperty('interest')
+        || !this.state.selectedtransaction[0].hasOwnProperty('id')
+        || !this.state.selectedaccount
+        )
+        {
+            alert("error");
+            return;
+        }
         this.setState({ transactionloading: true })
         if (this.state.selectedaccount.length < 1) {
             console.log(this.state.selectedaccount)
@@ -58,7 +69,7 @@ export class Interestmain extends Component {
         console.log(this.state.selectedaccount);
         console.log(this.state.selectedtransaction[0].balance);
         bal = this.state.selectedtransaction[0].balance;
-        var balance = bal + amt;
+        var balance = (bal + amt).toFixed(2);
         console.log(this.state.selectedaccount)
         console.log(this.state.selectedaccounttype)
         console.log(amt)
@@ -78,12 +89,39 @@ export class Interestmain extends Component {
             entry: "debit",
             balance: balance,
             islatest: "1",
-            cinterest: 0,
+            interest: 0,
             accountname: this.state.selectedtransaction[0].accountname
         })
             .then(() => {
+                axios.put('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction', {
+                    accountid: this.state.selectedaccount,
+                    created: this.state.selectedtransaction[0].created,
+                    islatest: "0",
+                    id:this.state.selectedtransaction[0].id,
+                    accounttypeid: this.state.selectedtransaction[0].accounttypeid,
+                    accounttype: this.state.selectedtransaction[0].accounttype,
+                    amount: this.state.selectedtransaction[0].amount,
+                    type: this.state.selectedtransaction[0].type,
+                    entry: this.state.selectedtransaction[0].entry,
+                    balance: this.state.selectedtransaction[0].balance,
+                    cinterest: this.state.selectedtransaction[0].interest,
+                    accountname: this.state.selectedtransaction[0].accountname
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 this.setState({ transactionloading: false })
-                //  this.gettransactions();
 
             })
     }
@@ -92,7 +130,7 @@ export class Interestmain extends Component {
         this.gettransactions();
     }
     onhandleaccountchange(acid) {
-        this.setState({ selectedtransaction: [], total: 0 })
+        this.setState({ selectedtransaction: [] })
         if (acid === "-9") {
             this.setState({ selectedaccount: "" });
             return;
@@ -153,7 +191,7 @@ export class Interestmain extends Component {
     }
     render() {
         return (
-            <div>
+            <div style={{minHeight:"500px"}}>
                 { this.state.pageloading ? <BLoader /> :
                     <div className="container-fluid">
                         <div className="row">
@@ -163,7 +201,7 @@ export class Interestmain extends Component {
                                     <button type="submit" onClick={this.onselectaccount} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
                                         {this.state.loading ? <Loader style={{ textAlign: "center" }} /> : "Get Info"}
                                     </button>
-                                    <button style={{marginLeft:"50px"}} type="submit" onClick={this.onrefresh} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
+                                    <button style={{ marginLeft: "50px" }} type="submit" onClick={this.onrefresh} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
                                         Refresh
                                     </button>
 
