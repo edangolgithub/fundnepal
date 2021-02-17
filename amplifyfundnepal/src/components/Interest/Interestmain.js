@@ -118,11 +118,7 @@ export class Interestmain extends Component {
 
 
 
-
-
-
                 this.setState({ transactionloading: false })
-
             })
     }
     componentDidMount() {
