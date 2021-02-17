@@ -10,6 +10,14 @@ const override = css`
   text-align:center;
   margin-top:-10px;
 `;
+// "react-bootstrap-table-next": "^4.0.3",
+//     "react-bootstrap-table2-editor": "^1.4.0",
+//     "react-bootstrap-table2-paginator": "^2.1.2",
+// "react-facebook": "^8.1.4",
+// "@testing-library/jest-dom": "^5.11.9",
+// "@testing-library/react": "^11.2.5",
+// "@testing-library/user-event": "^12.7.1",
+
 const color='red';
 const loading=true;
     const Loader = () => (
