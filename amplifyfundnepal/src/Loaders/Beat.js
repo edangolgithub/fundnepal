@@ -21,7 +21,7 @@ const override = css`
 const color='red';
 const loading=true;
     const Loader = () => (
-        <div>
+      <div style={{minHeight:"700px",marginTop:"300px"}}>
         <BeatLoader color={color} loading={loading} css={override}  />
         </div>
     );  
