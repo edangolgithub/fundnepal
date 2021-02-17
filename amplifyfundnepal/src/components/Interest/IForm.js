@@ -10,8 +10,10 @@ export class Iform extends Component {
     this.props.formclick(this.state.amount);
   }
   amountchange(event) {
-    this.setState({ amount: event.target.value },
-      () => { console.log(this.state.amount) })
+    this.setState({ amount: event.target.value }
+      // ,
+      // () => { console.log(this.state.amount) }
+      )
 
   }
   constructor() {
@@ -29,7 +31,7 @@ export class Iform extends Component {
             <input type="text" name="email" onChange={this.amountchange} className="form-control" id="email" placeholder="Enter Amount" />
           </div>
           <button disabled={(this.props.data.selectedaccount.length < 1 || this.props.data.selectedaccounttype.length < 1)}
-            type="submit" onClick={this.formclick} className="btn btn-primary mb-2">
+            type="button" onClick={this.formclick} className="btn btn-primary mb-2">
             {this.props.data.transactionloading ?
               <Loader style={{ textAlign: "center" }} /> : "Add"
             }

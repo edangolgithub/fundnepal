@@ -57,7 +57,9 @@ export class Interestmain extends Component {
             alert("error");
             return;
         }
-        this.setState({ transactionloading: true })
+      //  console.log(this.state.selectedtransaction[0])
+       
+      this.setState({ transactionloading: true })
         if (this.state.selectedaccount.length < 1) {
             console.log(this.state.selectedaccount)
             alert("no account selected")
@@ -66,18 +68,20 @@ export class Interestmain extends Component {
         }
         var d = new Date().toISOString();
         var bal = 0;
-        console.log(this.state.selectedaccount);
-        console.log(this.state.selectedtransaction[0].balance);
         bal = this.state.selectedtransaction[0].balance;
-        var balance = (bal + amt).toFixed(2);
-        console.log(this.state.selectedaccount)
-        console.log(this.state.selectedaccounttype)
-        console.log(amt)
-        console.log(fun.resolveaccounttype(this.state.selectedaccounttype))
-        console.log(d)
-        console.log(balance)
-        console.log(this.state.selectedtransaction[0].accountname)
-        //  let ci = fun.CalculteDailyInterest(bal, .06, 365, 1 / 365)
+        var balance=bal+amt;
+        //var balance = (bal + amt).toFixed(2);
+
+        // console.log(this.state.selectedaccount);
+        // console.log(this.state.selectedtransaction[0].balance);   
+        // console.log(this.state.selectedaccount)
+        // console.log(this.state.selectedaccounttype)
+        // console.log(amt)
+        // console.log(fun.resolveaccounttype(this.state.selectedaccounttype))
+        // console.log(d)
+        // console.log(balance)
+        // console.log(this.state.selectedtransaction[0].accountname)        
+
 
         axios.post('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction', {
             accountid: this.state.selectedaccount,
@@ -93,6 +97,7 @@ export class Interestmain extends Component {
             accountname: this.state.selectedtransaction[0].accountname
         })
             .then(() => {
+             
                 axios.put('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction', {
                     accountid: this.state.selectedaccount,
                     created: this.state.selectedtransaction[0].created,
@@ -107,18 +112,14 @@ export class Interestmain extends Component {
                     cinterest: this.state.selectedtransaction[0].interest,
                     accountname: this.state.selectedtransaction[0].accountname
                 })
-
-
-
-
-
-
-
-
-
-
-
                 this.setState({ transactionloading: false })
+            })
+            .then(()=>{
+                this.setState({selectedtransaction:[]})
+                this.setState({transaction:[]})
+                this.setState({selectedaccount:""})
+                this.setState({selectedaccounttype:""})
+                alert("transction completed")
             })
     }
     componentDidMount() {
