@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import * as fun from './ApiFunctions'
 
 export class NewAccount extends Component {
   constructor(props) {
@@ -8,13 +9,10 @@ export class NewAccount extends Component {
      d:[]
    }
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addAccount = this.addAccount.bind(this);
   }
 
-  handleChange(evt) {
-  //  this.setState({ value: event.target.value });
-  //console.log( evt.target.name)
-  //console.log(evt.target.value)
+  handleChange(evt) { 
   var fname=evt.target.name;
   var fvalue=evt.target.value;
 ;
@@ -25,18 +23,18 @@ export class NewAccount extends Component {
   this.setState({data:d})
   }
 
-  handleSubmit(event) {    
-    console.log(this.state.data)
+  addAccount(event) {    
+    fun.postnewaccount(this.state.data)
     event.preventDefault();
   }
 
   render() {
     return (
       <div className="container jumbotron m-5">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.addAccount}>
           <div className="form-group">
             <label htmlFor="accountnumber">Account Number</label>
-            <input type="text" name="accountnumber" onChange={this.handleChange} className="form-control" id="accountnumber" placeholder="Account Number" />
+            <input type="text" name="accountid" onChange={this.handleChange} className="form-control" id="accountnumber" placeholder="Account Number" />
 
           </div>
           <div className="form-group">
@@ -63,19 +61,19 @@ export class NewAccount extends Component {
             <label className="col-4">Account Type</label>
             <div className="col-8" onChange={this.handleChange}>
               <div className="custom-control custom-checkbox custom-control-inline">
-                <input name="accounttype" id="actype_0" type="radio" className="custom-control-input" defaultValue={1} />
+                <input name="accounttypeid" id="actype_0" type="radio" className="custom-control-input" defaultValue={1} />
                 <label htmlFor="actype_0" className="custom-control-label">Daily</label>
               </div>
               <div className="custom-control custom-checkbox custom-control-inline">
-                <input name="accounttype" id="actype_1" type="radio" className="custom-control-input" defaultValue={2} />
+                <input name="accounttypeid" id="actype_1" type="radio" className="custom-control-input" defaultValue={2} />
                 <label htmlFor="actype_1" className="custom-control-label">Monthly</label>
               </div>
               <div className="custom-control custom-checkbox custom-control-inline">
-                <input name="accounttype" id="actype_2" type="radio" className="custom-control-input" defaultValue={3} />
+                <input name="accounttypeid" id="actype_2" type="radio" className="custom-control-input" defaultValue={3} />
                 <label htmlFor="actype_2" className="custom-control-label">Fixed</label>
               </div>
               <div className="custom-control custom-checkbox custom-control-inline">
-                <input name="accounttype" id="actype_3" type="radio" className="custom-control-input" defaultValue={4} />
+                <input name="accounttypeid" id="actype_3" type="radio" className="custom-control-input" defaultValue={4} />
                 <label htmlFor="actype_3" className="custom-control-label">Swoniga</label>
               </div>
             </div>
