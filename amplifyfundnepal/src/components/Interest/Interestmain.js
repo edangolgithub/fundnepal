@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from "react-router-dom";
 import axios from 'axios'
 import AccountList from "./AccountList"
 //import SelectedAccount from "./SelectedAccount";
@@ -109,7 +110,7 @@ export class Interestmain extends Component {
                     type: this.state.selectedtransaction[0].type,
                     entry: this.state.selectedtransaction[0].entry,
                     balance: this.state.selectedtransaction[0].balance,
-                    cinterest: this.state.selectedtransaction[0].interest,
+                    interest: this.state.selectedtransaction[0].interest,
                     accountname: this.state.selectedtransaction[0].accountname
                 })
                 this.setState({ transactionloading: false })
@@ -163,6 +164,7 @@ export class Interestmain extends Component {
         // this.getaccounttypes=this.getaccounttypes.bind(this)
         this.formclick = this.formclick.bind(this)
         this.onrefresh = this.onrefresh.bind(this);
+        this.createNewAccount=  this.createNewAccount.bind(this)
     }
     onrefresh() {
         this.gettransactions();
@@ -183,6 +185,9 @@ export class Interestmain extends Component {
         }
 
     }
+    createNewAccount() {       
+        this.props.history.push("/N");
+    }
     componentDidUpdate() {
         //  console.log(this.state.result)  
     }
@@ -195,11 +200,14 @@ export class Interestmain extends Component {
                             <div className="col d-flex">
                                 <form className="form-inline">
                                     <AccountList onhandletypechange={this.onhandletypechange} onhandleaccountchange={this.onhandleaccountchange} accountids={this.state.accountids} accounttypes={this.state.accounttypes} />
-                                    <button type="submit" onClick={this.onselectaccount} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
+                                    <button type="button" onClick={this.onselectaccount} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
                                         {this.state.loading ? <Loader style={{ textAlign: "center" }} /> : "Get Info"}
                                     </button>
-                                    <button style={{ marginLeft: "50px" }} type="submit" onClick={this.onrefresh} className="btn btn-primary" disabled={(this.state.selectedaccount.length < 1 || this.state.selectedaccounttype.length < 1)}>
+                                    <button style={{ marginLeft: "50px" }} type="button" onClick={this.onrefresh} className="btn btn-primary" >
                                         Refresh
+                                    </button>
+                                    <button type="button" style={{ marginLeft: "50px" }} onClick={this.createNewAccount} className="btn btn-danger">
+                                        New Account
                                     </button>
 
                                 </form>
@@ -228,4 +236,4 @@ export class Interestmain extends Component {
     }
 }
 
-export default Interestmain
+export default withRouter(Interestmain)

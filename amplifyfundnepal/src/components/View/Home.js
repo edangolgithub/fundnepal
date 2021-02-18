@@ -8,7 +8,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-
         {/* Masthead*/}
         <header className="eslider">
           <div className="container-fluid">
