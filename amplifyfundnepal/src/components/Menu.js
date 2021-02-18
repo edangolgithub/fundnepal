@@ -9,6 +9,7 @@ import GG from '../components/NgoApi/GlobalGivings'
 import Email from './Email/Email';
 import Im from './Interest/Interestmain'
 //import I from './Interest/Interest'
+import N from './Interest/NewAccount'
 class MainMenu extends Component {   
     render() {
         return (
@@ -26,7 +27,7 @@ class MainMenu extends Component {
                             <NavDropdown title="More" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">GG</NavDropdown.Item>
                                 <NavDropdown.Item href="#email">Email</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                <NavDropdown.Item href="#N">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
@@ -61,6 +62,9 @@ class MainMenu extends Component {
                         </Route>
                         <Route path="/i">
                             <Im />
+                        </Route>
+                        <Route path="/N">
+                            <N />
                         </Route>
                     </Switch>
                 </Router>

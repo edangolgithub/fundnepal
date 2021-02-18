@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {resolveaccounttype} from './Calculation'
 export async function getaccounttypes() {
    
   const data= await axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/accounttype')
@@ -16,15 +17,31 @@ export async function gettransactions() {
     const data= await axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction')
        return data;
 }
-export function posttransaction(accountid, accounttypeid, date, amount, type, entry) {
-    var d = date === null ? new Date().toDateString() : date;
-    axios.post('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/transaction', {
-        accountid: accountid,
-        date: d,
-        accounttypeid: accounttypeid,
-        amount: amount,
-        type: type,
-        entry: entry
+export function postnewaccount(newaccount) {
+    console.log(newaccount)
+    console.log(resolveaccounttype(newaccount.accounttypeid))
+    var rt=resolveaccounttype(newaccount.accounttypeid);  
+    var d = new Date().toISOString() ;
+
+
+    
+    axios.post('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/account', {
+        created: d,        
+        islatest: "1",
+        interest: 0,
+        type: "cash",
+        entry: "debit",
+        accounttype: rt,
+        isenabled: "1",
+        address: newaccount.address,
+        accountid: newaccount.accountid,
+        accounttypeid: newaccount.accounttypeid,
+        amount: parseFloat(newaccount.amount),
+        accountname: newaccount.accountname,
+        balance:parseFloat(newaccount.amount),
+        phone: newaccount.phone,
+        email: newaccount.email,
+       
     })
         .then(() => alert("success"))
         .catch(err => {
