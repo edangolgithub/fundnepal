@@ -1,0 +1,12 @@
+aws dynamodb query \
+    --table-name Transaction \
+    --key-condition-expression "accountid = :id" \
+    --expression-attribute-values '{":id": {"S": "123"}}'\
+
+
+    aws dynamodb scan \
+    --table-name Transaction \    
+    --filter-expression 'isenabled = :p' \
+    --expression-attribute-values '{
+        ":p": {"S":"1"}       
+    }'

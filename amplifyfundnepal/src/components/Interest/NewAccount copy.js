@@ -1,26 +1,17 @@
 import React, { Component } from 'react'
 import * as fun from './ApiFunctions'
-
-const validEmailRegex = RegExp(
-  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-);
-const validateForm = errors => {
-  let valid = true;
-  Object.values(errors).forEach(val => val.length > 0 && (valid = false));
-  return valid;
-};
-
+import FormErrors from './FormErrors'
 export class NewAccount extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       d: [],
-      errors: {
-        accountid: '',
-        email: '',
-        password: '',
-      }
+      formErrors: [{ email: '', password: '',accountid:'' }],
+      emailValid: false,
+      passwordValid: false,
+      accountidvalid:false,
+      formValid: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.addAccount = this.addAccount.bind(this);
@@ -29,63 +20,60 @@ export class NewAccount extends Component {
   handleChange(evt) {
     var fname = evt.target.name;
     var fvalue = evt.target.value;
-    let errors = this.state.errors;
-
-    switch (fname) {
-      case 'accountid':
-        errors.accountid =
-          fvalue.length < 5
-            ? 'Full Name must be at least 5 characters long!'
-            : '';
-        break;
-      case 'emailqq':
-        errors.email =
-          validEmailRegex.test(fvalue)
-            ? ''
-            : 'Email is not valid!';
-        break;
-      case 'passwordqq':
-        errors.password =
-          fvalue.length < 8
-            ? 'Password must be at least 8 characters long!'
-            : '';
-        break;
-      default:
-        break;
-    }
-
-    this.setState({ errors, [fname]: fvalue });
-
+    this.validateField(fname,fvalue);
     var d = {
       ...this.state.data,
       [fname]: fvalue
     };
     this.setState({ data: d })
   }
-
+  validateForm() {
+    this.setState({ formValid: this.state.emailValid && this.state.passwordValid && this.state.accountidvalid });
+  }
+  validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors;
+    let emailValid = this.state.emailValid;
+    let passwordValid = this.state.passwordValid;
+    let accountidvalid=this.state.accountidvalid;
+    switch (fieldName) {
+      case 'accountid':
+        if(value.length<1)
+        fieldValidationErrors.accountid = accountidvalid ? '' : ' is too short';
+        break;
+      case 'email':
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+        break;
+      case 'password':
+        passwordValid = value.length >= 6;
+        fieldValidationErrors.password = passwordValid ? '' : ' is too short';
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      formErrors: fieldValidationErrors,
+      emailValid: emailValid,
+      passwordValid: passwordValid
+    }, this.validateForm);
+  }
   addAccount(event) {
     event.preventDefault();
-    if (validateForm(this.state.errors)) {
-      alert('Valid Form')
-      return
-      fun.postnewaccount(this.state.data)
-    } else {
-      alert('Invalid Form')
-    }
-
+    fun.postnewaccount(this.state.data)
 
   }
 
   render() {
-    const { errors } = this.state;
     return (
       <div className="container jumbotron m-5">
+        <div className="panel panel-default">
+          <FormErrors formErrors={this.state.formErrors} />
+        </div>
         <form onSubmit={this.addAccount}>
           <div className="form-group">
             <label htmlFor="accountnumber">Account Number</label>
             <input type="text" name="accountid" onChange={this.handleChange} className="form-control" id="accountnumber" placeholder="Account Number" />
-            {errors.accountid.length > 0 &&
-              <span className='error'>{errors.accountid}</span>}
+
           </div>
           <div className="form-group">
             <label htmlFor="accountname">Account Name</label>
@@ -111,7 +99,7 @@ export class NewAccount extends Component {
             <label className="col-4">Account Type</label>
             <div className="col-8" onChange={this.handleChange}>
               <div className="custom-control custom-checkbox custom-control-inline">
-                <input name="accounttypeid" defaultChecked id="actype_0" type="radio" className="custom-control-input" defaultValue={1} />
+                <input name="accounttypeid" checked id="actype_0" type="radio" className="custom-control-input" defaultValue={1} />
                 <label htmlFor="actype_0" className="custom-control-label">Daily</label>
               </div>
               <div className="custom-control custom-checkbox custom-control-inline">
@@ -129,7 +117,7 @@ export class NewAccount extends Component {
             </div>
           </div>
 
-          <input type="submit" value="Submit" className="btn btn-primary" />
+          <input type="submit" disabled={!this.state.formvalid} value="Submit" className="btn btn-primary" />
         </form>
       </div>
     );

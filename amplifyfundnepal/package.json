@@ -6,6 +6,7 @@
     "axios": "^0.21.1",
     "emailjs-com": "^2.6.4",
     "joi": "^17.4.0",
+    "property-validator": "^1.0.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
     "react-bootstrap-table-next": "^4.0.3",

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {resolveaccounttype} from './Calculation'
+import { assert, presence, email } from 'property-validator';
 export async function getaccounttypes() {
    
   const data= await axios.get('https://nxopo5t28l.execute-api.us-east-1.amazonaws.com/Prod/api/accounttype')
@@ -18,8 +19,26 @@ export async function gettransactions() {
        return data;
 }
 export function postnewaccount(newaccount) {
-    console.log(newaccount)
-    console.log(resolveaccounttype(newaccount.accounttypeid))
+    //.log(newaccount)
+    //console.log(resolveaccounttype(newaccount.accounttypeid))
+    let user = {
+        username: 'nettofarah',
+        email_address: 'invalid@email'
+      }
+var res= assert(newaccount, [
+        presence('accountid'),
+        email('email'),
+        presence('amount'),
+        presence('accounttypeid')
+      ]);
+      if (!res.valid) {
+        return;
+      } else {
+        alert("form is ok")
+      }
+    
+      return;
+
     var rt=resolveaccounttype(newaccount.accounttypeid);  
     var d = new Date().toISOString() ;
 
