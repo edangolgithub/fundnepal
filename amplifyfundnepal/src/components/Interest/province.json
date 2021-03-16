@@ -1,0 +1,92 @@
+{
+    "Bagmati": [
+        "bhaktapur",
+        "dhading",
+        "kathmandu",
+        "kavrepalanchok",
+        "lalitpur",
+        "nuwakot",
+        "rasuwa",
+        "sindhupalchok",
+        "sindhuli",
+        "ramechhap",
+        "chitwan",
+        "makwanpur",
+        "dholkha"
+    ],
+    "Gandaki province": [
+        "gorkha",
+        "kaski",
+        "lamjung",
+        "manang",
+        "syangja",
+        "tanahu",
+        "baglung",
+        "mustang",
+        "myagdi",
+        "parbat"
+    ],
+    "Karnali province": [
+        "dolpa",
+        "humla",
+        "jumla",
+        "kalikot",
+        "mugu",
+        "dailekh",
+        "jajarkot",
+        "surkhet",
+        "Rukum West"
+    ],
+    "Province1": [
+        "khotang",
+        "okhaldhunga",
+        "solukhumbu",
+        "taplejung",
+        "udayapur",
+        "bhojpur",
+        "dhankuta",
+        "morang",
+        "sankhuwasabha",
+        "sunsari",
+        "terhathum",
+        "ilam",
+        "jhapa",
+        "panchthar"
+    ],
+    "Province2": [
+        "saptari",
+        "siraha",
+        "dhanusa",
+        "rautahat",
+        "mahottari",
+        "bara",
+        "parsa",
+        "sarlahi"
+    ],
+    "Province5": [
+        "banke",
+        "bardiya",
+        "nawalparasi west",
+        "arghakhanchi",
+        "gulmi",
+        "kapilvastu",
+        "palpa",
+        "rupandehi",
+        "dang deukhuri",
+        "pyuthan",
+        "rolpa",
+        "rukum east",
+        "salyan"
+    ],
+    "Sudurpaschim province": [
+        "achham",
+        "bajhang",
+        "bajura",
+        "doti",
+        "kailali",
+        "baitadi",
+        "dadeldhura",
+        "darchula",
+        "kanchanpur"
+    ]
+}
