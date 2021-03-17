@@ -33,6 +33,7 @@ app.use(function(req, res, next) {
 app.get('/items', function(req, res) {
   // Add your code here
   const items = ['hello', 'world']
+  alert("api")
   res.json({success: 'get call succeed!', url: req.url});
 });
 

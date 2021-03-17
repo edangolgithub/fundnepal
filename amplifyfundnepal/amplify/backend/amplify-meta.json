@@ -32,6 +32,11 @@
         "LambdaExecutionRole": "fundnepalLambdaRole0bffb1b3-dev"
       },
       "lastPushDirHash": "ggy4qmwxECQXJluaE9VwBeAoPU0="
+    },
+    "S3Triggere35af482": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
     }
   },
   "api": {
