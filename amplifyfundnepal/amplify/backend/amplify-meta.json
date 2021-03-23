@@ -12,58 +12,44 @@
       "AmplifyAppId": "dmouex6ipyl87"
     }
   },
-  "function": {
-    "fundnepallambda": {
-      "build": true,
+  "function": {},
+  "api": {},
+  "auth": {
+    "fundnepale6115e63": {
+      "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "lastBuildTimeStamp": "2021-02-02T14:44:18.068Z",
-      "lastPackageTimeStamp": "2021-02-02T14:44:19.615Z",
-      "distZipFilename": "fundnepallambda-3032727830646d546269-build.zip",
+      "dependsOn": [],
+      "customAuth": false,
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-fundnepal-dev-121822-deployment/amplify-cfn-templates/function/fundnepallambda-cloudformation-template.json",
-        "logicalId": "functionfundnepallambda"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-fundnepal-dev-121822-deployment/amplify-cfn-templates/auth/fundnepale6115e63-cloudformation-template.yml",
+        "logicalId": "authfundnepale6115e63"
       },
-      "lastPushTimeStamp": "2021-02-02T16:07:57.134Z",
+      "lastPushTimeStamp": "2021-03-17T14:44:22.337Z",
       "output": {
-        "Region": "us-east-1",
-        "Arn": "arn:aws:lambda:us-east-1:984648741180:function:fundnepallambda-dev",
-        "Name": "fundnepallambda-dev",
-        "LambdaExecutionRole": "fundnepalLambdaRole0bffb1b3-dev"
+        "UserPoolId": "us-east-1_VVhSeXPRh",
+        "AppClientIDWeb": "6nlhivk57l5aca0b41o69r4oqf",
+        "AppClientID": "55et5oieboh9hapt0uivj00sn2",
+        "IdentityPoolId": "us-east-1:dd3ab94e-166e-4add-aebd-6fd3f0acc819",
+        "IdentityPoolName": "fundnepale6115e63_identitypool_e6115e63__dev",
+        "UserPoolName": "fundnepale6115e63_userpool_e6115e63"
       },
-      "lastPushDirHash": "ggy4qmwxECQXJluaE9VwBeAoPU0="
-    },
-    "S3Triggere35af482": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true
+      "lastPushDirHash": "xaHf5O8gSRHVTaBw76a+f4NgsTE="
     }
   },
-  "api": {
-    "fundnepalapi": {
-      "service": "API Gateway",
+  "storage": {
+    "fundstorage": {
+      "service": "S3",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "fundnepallambda",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-fundnepal-dev-121822-deployment/amplify-cfn-templates/api/fundnepalapi-cloudformation-template.json",
-        "logicalId": "apifundnepalapi"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-fundnepal-dev-121822-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storagefundstorage"
       },
-      "lastPushTimeStamp": "2021-02-02T16:07:57.141Z",
+      "lastPushTimeStamp": "2021-03-17T14:44:22.337Z",
       "output": {
-        "ApiName": "fundnepalapi",
-        "RootUrl": "https://7oao8rerte.execute-api.us-east-1.amazonaws.com/dev",
-        "ApiId": "7oao8rerte"
+        "BucketName": "fundnepalaebbfc8b044c45cf81c8a80acac094af121822-dev",
+        "Region": "us-east-1"
       },
-      "lastPushDirHash": "6lSLO32FbjhfA+vBIILRjs8Xs2I="
+      "lastPushDirHash": "dzH5ZVJs+jQfnqjDbND1u0FnXoE="
     }
   }
 }

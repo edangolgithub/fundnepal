@@ -3,6 +3,7 @@ import Footer from './components/View/Footer'
 import FbShare from './components/View/FbShare'
 import Fb from './components/View/Fb'
 import './statics/style.css'
+
 function App() {
   return (
     <div className="App">

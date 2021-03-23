@@ -10,6 +10,11 @@
       "StackName": "amplify-fundnepal-dev-121822",
       "StackId": "arn:aws:cloudformation:us-east-1:984648741180:stack/amplify-fundnepal-dev-121822/17232c70-5d75-11eb-916d-0eb5b83f8639",
       "AmplifyAppId": "dmouex6ipyl87"
+    },
+    "categories": {
+      "auth": {
+        "fundnepale6115e63": {}
+      }
     }
   }
 }

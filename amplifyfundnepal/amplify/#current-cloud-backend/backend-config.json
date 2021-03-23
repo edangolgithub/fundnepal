@@ -1,25 +1,18 @@
 {
-  "function": {
-    "fundnepallambda": {
-      "build": true,
+  "function": {},
+  "api": {},
+  "auth": {
+    "fundnepale6115e63": {
+      "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "dependsOn": [],
+      "customAuth": false
     }
   },
-  "api": {
-    "fundnepalapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "fundnepallambda",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
+  "storage": {
+    "fundstorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
     }
   }
 }
