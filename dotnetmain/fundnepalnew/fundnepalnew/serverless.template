@@ -15,21 +15,21 @@
         "Timeout": 30,
         "Role": null,
         "Policies": [
-          "AWSLambdaFullAccess"
+          "AWSLambda_FullAccess"
         ],
         "Environment": {
           "Variables": {}
         },
         "Events": {
           "ProxyResource": {
-            "Type": "Api",
+            "Type": "HttpApi",
             "Properties": {
               "Path": "/{proxy+}",
               "Method": "ANY"
             }
           },
           "RootResource": {
-            "Type": "Api",
+            "Type": "HttpApi",
             "Properties": {
               "Path": "/",
               "Method": "ANY"
@@ -43,7 +43,7 @@
     "ApiURL": {
       "Description": "API endpoint URL for Prod environment",
       "Value": {
-        "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+        "Fn::Sub": "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/"
       }
     }
   }

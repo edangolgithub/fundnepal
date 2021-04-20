@@ -5,21 +5,21 @@
 @{
     ViewData["Title"] = "user";
 }
-<h2>Data from User Dynamo Table</h2>
+<h2>Data from User Inventory Table</h2>
 
 <p>
     @{
-        List<User> ulist = new List<User>();
+        List<Inventory> ulist = new List<Inventory>();
           using (var client = new HttpClient())
         {
-            client.BaseAddress = new Uri("https://p82kvytjaa.execute-api.us-east-1.amazonaws.com/Stage");
+            client.BaseAddress = new Uri("https://5w9ovuk4sh.execute-api.us-east-1.amazonaws.com/api/inventory");
             //HTTP GET
             var responseTask = client.GetAsync("");
             responseTask.Wait();
 
             var result = responseTask.Result;
             var userdata= await result.Content.ReadAsStringAsync();
-            ulist = JsonConvert.DeserializeObject<List<User>>(userdata);
+            ulist = JsonConvert.DeserializeObject<List<Inventory>>(userdata);
         }
         
     }
@@ -38,13 +38,13 @@
           
       
     @{
-        foreach (User item in ulist)
+        foreach (Inventory item in ulist)
         {
               <tr>
                 <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Profile</td>
-                <td>@item.Access</td>
+                <td>@item.Serial</td>
+                <td>@item.Site</td>
+                <td>@item.User</td>
             </tr>
         }
     }
